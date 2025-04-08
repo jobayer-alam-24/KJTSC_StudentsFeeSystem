@@ -1,0 +1,147 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{881BCCE3-BB74-4005-BD8F-E277F07774E4}|StudentsFeeSystem\\StudentsFeeSystem.csproj|d:\\kjtsc_studentsfeesystem\\studentsfeesystem\\studentsfeesystem\\models\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{881BCCE3-BB74-4005-BD8F-E277F07774E4}|StudentsFeeSystem\\StudentsFeeSystem.csproj|solutionrelative:studentsfeesystem\\models\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{881BCCE3-BB74-4005-BD8F-E277F07774E4}|StudentsFeeSystem\\StudentsFeeSystem.csproj|d:\\kjtsc_studentsfeesystem\\studentsfeesystem\\studentsfeesystem\\views\\student\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{881BCCE3-BB74-4005-BD8F-E277F07774E4}|StudentsFeeSystem\\StudentsFeeSystem.csproj|solutionrelative:studentsfeesystem\\views\\student\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{881BCCE3-BB74-4005-BD8F-E277F07774E4}|StudentsFeeSystem\\StudentsFeeSystem.csproj|d:\\kjtsc_studentsfeesystem\\studentsfeesystem\\studentsfeesystem\\views\\student\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{881BCCE3-BB74-4005-BD8F-E277F07774E4}|StudentsFeeSystem\\StudentsFeeSystem.csproj|solutionrelative:studentsfeesystem\\views\\student\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{881BCCE3-BB74-4005-BD8F-E277F07774E4}|StudentsFeeSystem\\StudentsFeeSystem.csproj|d:\\kjtsc_studentsfeesystem\\studentsfeesystem\\studentsfeesystem\\views\\student\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{881BCCE3-BB74-4005-BD8F-E277F07774E4}|StudentsFeeSystem\\StudentsFeeSystem.csproj|solutionrelative:studentsfeesystem\\views\\student\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{881BCCE3-BB74-4005-BD8F-E277F07774E4}|StudentsFeeSystem\\StudentsFeeSystem.csproj|d:\\kjtsc_studentsfeesystem\\studentsfeesystem\\studentsfeesystem\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{881BCCE3-BB74-4005-BD8F-E277F07774E4}|StudentsFeeSystem\\StudentsFeeSystem.csproj|solutionrelative:studentsfeesystem\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{881BCCE3-BB74-4005-BD8F-E277F07774E4}|StudentsFeeSystem\\StudentsFeeSystem.csproj|d:\\kjtsc_studentsfeesystem\\studentsfeesystem\\studentsfeesystem\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{881BCCE3-BB74-4005-BD8F-E277F07774E4}|StudentsFeeSystem\\StudentsFeeSystem.csproj|solutionrelative:studentsfeesystem\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{881BCCE3-BB74-4005-BD8F-E277F07774E4}|StudentsFeeSystem\\StudentsFeeSystem.csproj|d:\\kjtsc_studentsfeesystem\\studentsfeesystem\\studentsfeesystem\\views\\student\\makepayment.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{881BCCE3-BB74-4005-BD8F-E277F07774E4}|StudentsFeeSystem\\StudentsFeeSystem.csproj|solutionrelative:studentsfeesystem\\views\\student\\makepayment.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\Views\\Student\\Index.cshtml",
+              "RelativeDocumentMoniker": "StudentsFeeSystem\\Views\\Student\\Index.cshtml",
+              "ToolTip": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\Views\\Student\\Index.cshtml",
+              "RelativeToolTip": "StudentsFeeSystem\\Views\\Student\\Index.cshtml",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAAC4AAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-08T17:45:41.854Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\Views\\Student\\Edit.cshtml",
+              "RelativeDocumentMoniker": "StudentsFeeSystem\\Views\\Student\\Edit.cshtml",
+              "ToolTip": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\Views\\Student\\Edit.cshtml",
+              "RelativeToolTip": "StudentsFeeSystem\\Views\\Student\\Edit.cshtml",
+              "ViewState": "AgIAABoAAAAAAAAAAAAAACMAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-08T17:45:32.16Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\Views\\Student\\Create.cshtml",
+              "RelativeDocumentMoniker": "StudentsFeeSystem\\Views\\Student\\Create.cshtml",
+              "ToolTip": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\Views\\Student\\Create.cshtml",
+              "RelativeToolTip": "StudentsFeeSystem\\Views\\Student\\Create.cshtml",
+              "ViewState": "AgIAABwAAAAAAAAAAAAAACIAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-08T17:45:17.621Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "StudentsFeeSystem\\Data\\AppDbContext.cs",
+              "ToolTip": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "StudentsFeeSystem\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAoAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T17:42:49.478Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Student.cs",
+              "DocumentMoniker": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\Models\\Student.cs",
+              "RelativeDocumentMoniker": "StudentsFeeSystem\\Models\\Student.cs",
+              "ToolTip": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\Models\\Student.cs",
+              "RelativeToolTip": "StudentsFeeSystem\\Models\\Student.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAgwBgAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T17:41:50.375Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MakePayment.cshtml",
+              "DocumentMoniker": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\Views\\Student\\MakePayment.cshtml",
+              "RelativeDocumentMoniker": "StudentsFeeSystem\\Views\\Student\\MakePayment.cshtml",
+              "ToolTip": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\Views\\Student\\MakePayment.cshtml",
+              "RelativeToolTip": "StudentsFeeSystem\\Views\\Student\\MakePayment.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-08T17:27:49.609Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "StudentController.cs",
+              "DocumentMoniker": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\Controllers\\StudentController.cs",
+              "RelativeDocumentMoniker": "StudentsFeeSystem\\Controllers\\StudentController.cs",
+              "ToolTip": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\Controllers\\StudentController.cs",
+              "RelativeToolTip": "StudentsFeeSystem\\Controllers\\StudentController.cs",
+              "ViewState": "AgIAAHEAAAAAAAAAAAAAAHoAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T16:32:50.774Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
