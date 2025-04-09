@@ -3,14 +3,6 @@
 @{
     ViewData["Title"] = "Index";
 }
-@if (TempData["Total"] != null)
-
-{
-    decimal total = Convert.ToDecimal(TempData["Total"]);
-    <h1>@total taka</h1>
-}
-
-
 <p>
     <a asp-action="Create">Create New</a>
     <a asp-action="ResetFees">RESET</a>
