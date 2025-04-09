@@ -11,7 +11,6 @@ using StudentsFeeSystem.Models;
 using StudentsFeeSystem.Services;
 using StudentsFeeSystem.ViewModel;
 
-
 namespace StudentsFeeSystem.Controllers
 {
     public class StudentController : Controller
@@ -55,8 +54,6 @@ namespace StudentsFeeSystem.Controllers
         }
 
         // POST: Student/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,FathersName,Roll,Class,Date,Department")] Student student)
@@ -88,8 +85,6 @@ namespace StudentsFeeSystem.Controllers
         }
 
         // POST: Student/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,FathersName,Roll,Class,Date,Department")] Student student)
@@ -122,22 +117,55 @@ namespace StudentsFeeSystem.Controllers
             BindSelectList();
             return View(student);
         }
+
+        // GET: MakePayment
         public ActionResult MakePayment()
         {
             var model = new ItemListViewModel
             {
                 Items = new List<Item>
                 {
-                new Item { Id = 1, Name = "Admission Fee", Value = 100 },
-                 new Item { Id = 1, Name = "Tution Fee", Value = 100 },
-                  new Item { Id = 1, Name = "Health Fee", Value = 200 }
+                    new Item { Id = 1, Name = "Admission Fee", Value = 100 },
+                    new Item { Id = 1, Name = "Tution Fee", Value = 100 },
+                    new Item { Id = 1, Name = "Health Fee", Value = 200 }
                 }
             };
             return View(model);
         }
-        public IActionResult Print(int id)
+
+        // POST: MakePayment
+        [HttpPost]
+        public async Task<IActionResult> MakePayment(int id, ItemListViewModel model)
         {
-            var student = _context.Students.FirstOrDefault(s => s.Id == id);
+            if (model.Items == null || !model.Items.Any(x => x.IsSelected))
+            {
+                ModelState.AddModelError("", "Please select at least one fee item.");
+                ViewBag.StudentId = id;
+                return View(model);
+            }
+
+            var selectedFees = model.Items
+                .Where(x => x.IsSelected)
+                .Select(x => new { x.Name, x.Value })
+                .ToList();
+
+            var student = await _context.Students.FindAsync(id);
+            if (student != null)
+            {
+                decimal totalAmount = selectedFees.Sum(x => x.Value);
+                student.HasPaid = true;
+                student.Fee = totalAmount;
+                _context.Entry(student).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        // Print Receipt (Asynchronous)
+        public async Task<IActionResult> Print(int id)
+        {
+            var student = await _context.Students.FirstOrDefaultAsync(s => s.Id == id);
             if (student == null)
             {
                 return NotFound();
@@ -150,32 +178,7 @@ namespace StudentsFeeSystem.Controllers
             return File(pdfBytes, "application/pdf");
         }
 
-        [HttpPost]
-        public ActionResult MakePayment(int id, ItemListViewModel model)
-        {
-
-            if (model.Items == null || !model.Items.Any(x => x.IsSelected))
-            {
-                ModelState.AddModelError("", "Please select at least one fee item.");
-                ViewBag.StudentId = id;
-                return View(model);
-            }
-            var selectedFees = model.Items
-                .Where(x => x.IsSelected)
-                .Select(x => new { x.Name, x.Value })
-                .ToList();
-            var student = _context.Students.Find(id);
-            decimal totalAmount = selectedFees.Sum(x => x.Value);
-            if (student != null)
-            {
-                student.HasPaid = true;
-                student.Fee = totalAmount;
-                _context.Entry(student).State = EntityState.Modified;
-                _context.SaveChanges(); 
-            }
-
-            return RedirectToAction(nameof(Index));
-        }
+        // Reset all fees to zero asynchronously
         public async Task<IActionResult> ResetFees()
         {
             var students = await _context.Students.ToListAsync();
@@ -190,7 +193,6 @@ namespace StudentsFeeSystem.Controllers
             TempData["Message"] = "All fees have been reset to 0 and payment status is set to false.";
             return RedirectToAction("Index");
         }
-
 
         // GET: Student/Delete/5
         public async Task<IActionResult> Delete(int? id)
@@ -224,14 +226,16 @@ namespace StudentsFeeSystem.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-        public JsonResult CheckRoll(bool isEdit, int roll)
+
+        // Check Roll number availability asynchronously
+        public async Task<JsonResult> CheckRoll(bool isEdit, int roll)
         {
             if (isEdit)
-            { 
+            {
                 return Json(true);
             }
-            bool isRollTaken = _context.Students.Any(s => s.Roll == roll);
 
+            bool isRollTaken = await _context.Students.AnyAsync(s => s.Roll == roll);
             if (isRollTaken)
             {
                 return Json($"Roll number is already taken!");
@@ -239,6 +243,7 @@ namespace StudentsFeeSystem.Controllers
 
             return Json(true);
         }
+
         private void BindSelectList()
         {
             var departmentList = Enum.GetValues(typeof(Department))
@@ -250,6 +255,7 @@ namespace StudentsFeeSystem.Controllers
                          });
             ViewBag.Departments = new SelectList(departmentList, "Value", "Text");
         }
+
         private bool StudentExists(int id)
         {
             return _context.Students.Any(e => e.Id == id);
