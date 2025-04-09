@@ -22,6 +22,7 @@ namespace StudentsFeeSystem.Models
         public bool IsEdit { get; set; }
         public int Class {  get; set; }
         [DisplayName("Date")]
+        public decimal? Fee { get; set; }
         public DateTime Date { get; set; } = DateTime.UtcNow;
         [Required(ErrorMessage = "Department is Required.")]
         [Display(Name = "Department")]

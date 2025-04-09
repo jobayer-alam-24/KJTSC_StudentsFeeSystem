@@ -36,6 +36,9 @@ namespace StudentsFeeSystem.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<decimal?>("Fee")
+                        .HasColumnType("TEXT");
+
                     b.Property<bool>("HasPaid")
                         .HasColumnType("INTEGER");
 

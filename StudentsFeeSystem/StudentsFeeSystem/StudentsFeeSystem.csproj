@@ -14,12 +14,9 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
+    <PackageReference Include="QuestPDF" Version="2025.4.0" />
     <PackageReference Include="SQLitePCLRaw.bundle_e_sqlite3" Version="2.1.11" />
     <PackageReference Include="System.Diagnostics.Tools" Version="4.3.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ViewModel\" />
   </ItemGroup>
 
 </Project>

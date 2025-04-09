@@ -1,1 +1,20 @@
-﻿
+﻿@using StudentsFeeSystem.ViewModel
+@model ItemListViewModel
+
+@using (Html.BeginForm("MakePayment", "Student", FormMethod.Post))
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <input type="hidden" value="@ViewBag.StudentId" />
+    for (int i = 0; i < Model.Items.Count; i++)
+    {
+        <div>
+            @Html.HiddenFor(m => m.Items[i].Id)
+            @Html.HiddenFor(m => m.Items[i].Name)
+            @Html.HiddenFor(m => m.Items[i].Value)
+            @Html.CheckBoxFor(m => m.Items[i].IsSelected)
+            @Model.Items[i].Name - @Model.Items[i].Value Tk
+        </div>
+    }
+
+    <button type="submit">Pay</button>
+}

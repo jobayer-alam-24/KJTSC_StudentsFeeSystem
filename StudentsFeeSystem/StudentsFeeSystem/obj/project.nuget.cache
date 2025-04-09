@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "03Y554m8HnI=",
+  "dgSpecHash": "jY98lEeRz0g=",
   "success": true,
   "projectFilePath": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem.csproj",
   "expectedPackageFiles": [
@@ -117,6 +117,7 @@
     "C:\\Users\\HP\\.nuget\\packages\\nuget.projectmodel\\6.11.0\\nuget.projectmodel.6.11.0.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\nuget.protocol\\6.11.0\\nuget.protocol.6.11.0.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\nuget.versioning\\6.11.0\\nuget.versioning.6.11.0.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\questpdf\\2025.4.0\\questpdf.2025.4.0.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.11\\sqlitepclraw.bundle_e_sqlite3.2.1.11.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\sqlitepclraw.core\\2.1.11\\sqlitepclraw.core.2.1.11.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.11\\sqlitepclraw.lib.e_sqlite3.2.1.11.nupkg.sha512",

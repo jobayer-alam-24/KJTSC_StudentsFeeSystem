@@ -3,11 +3,17 @@
 @{
     ViewData["Title"] = "Index";
 }
+@if (TempData["Total"] != null)
 
-<h1>Index</h1>
+{
+    decimal total = Convert.ToDecimal(TempData["Total"]);
+    <h1>@total taka</h1>
+}
+
 
 <p>
     <a asp-action="Create">Create New</a>
+    <a asp-action="ResetFees">RESET</a>
 </p>
 <table class="table">
     <thead>
@@ -58,6 +64,7 @@
                     @if (item.HasPaid)
                     {
                         <span>Paid</span>
+                        <a asp-action = "Print" asp-route-id ="@item.Id" target="_blank"> Print Receipt </a> 
                     }
                     else
                     {

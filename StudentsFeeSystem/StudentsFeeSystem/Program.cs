@@ -1,9 +1,10 @@
 using Microsoft.EntityFrameworkCore;
+using QuestPDF.Infrastructure;
 using SQLitePCL;
 using StudentsFeeSystem.Data;
 Batteries.Init();
 var builder = WebApplication.CreateBuilder(args);
-
+QuestPDF.Settings.License = LicenseType.Community;
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(options =>

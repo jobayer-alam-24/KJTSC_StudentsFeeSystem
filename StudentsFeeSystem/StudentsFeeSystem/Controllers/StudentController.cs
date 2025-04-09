@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using StudentsFeeSystem.Data;
 using StudentsFeeSystem.Helpers;
 using StudentsFeeSystem.Models;
+using StudentsFeeSystem.Services;
+using StudentsFeeSystem.ViewModel;
 
 
 namespace StudentsFeeSystem.Controllers
@@ -120,7 +122,75 @@ namespace StudentsFeeSystem.Controllers
             BindSelectList();
             return View(student);
         }
-      
+        public ActionResult MakePayment()
+        {
+            var model = new ItemListViewModel
+            {
+                Items = new List<Item>
+                {
+                new Item { Id = 1, Name = "Admission Fee", Value = 100 },
+                 new Item { Id = 1, Name = "Tution Fee", Value = 100 },
+                  new Item { Id = 1, Name = "Health Fee", Value = 200 }
+                }
+            };
+            return View(model);
+        }
+        public IActionResult Print(int id)
+        {
+            var student = _context.Students.FirstOrDefault(s => s.Id == id);
+            if (student == null)
+            {
+                return NotFound();
+            }
+
+            var pdfBytes = PdfService.GenerateStudentReceipt(student);
+
+            Response.Headers.Add("Content-Disposition", $"inline; filename=Receipt_{student.Name}.pdf");
+
+            return File(pdfBytes, "application/pdf");
+        }
+
+        [HttpPost]
+        public ActionResult MakePayment(int id, ItemListViewModel model)
+        {
+
+            if (model.Items == null || !model.Items.Any(x => x.IsSelected))
+            {
+                ModelState.AddModelError("", "Please select at least one fee item.");
+                ViewBag.StudentId = id;
+                return View(model);
+            }
+            var selectedFees = model.Items
+                .Where(x => x.IsSelected)
+                .Select(x => new { x.Name, x.Value })
+                .ToList();
+            var student = _context.Students.Find(id);
+            decimal totalAmount = selectedFees.Sum(x => x.Value);
+            if (student != null)
+            {
+                student.HasPaid = true;
+                student.Fee = totalAmount;
+                _context.Entry(student).State = EntityState.Modified;
+                _context.SaveChanges(); 
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+        public async Task<IActionResult> ResetFees()
+        {
+            var students = await _context.Students.ToListAsync();
+
+            foreach (var student in students)
+            {
+                student.Fee = 0;
+                student.HasPaid = false;
+            }
+
+            await _context.SaveChangesAsync();
+            TempData["Message"] = "All fees have been reset to 0 and payment status is set to false.";
+            return RedirectToAction("Index");
+        }
+
 
         // GET: Student/Delete/5
         public async Task<IActionResult> Delete(int? id)
