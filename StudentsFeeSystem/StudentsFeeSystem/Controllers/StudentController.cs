@@ -322,7 +322,6 @@ namespace StudentsFeeSystem.Controllers
                          });
             ViewBag.Departments = new SelectList(departmentList, "Value", "Text");
         }
-
         private bool StudentExists(int id)
         {
             return _context.Students.Any(e => e.Id == id);

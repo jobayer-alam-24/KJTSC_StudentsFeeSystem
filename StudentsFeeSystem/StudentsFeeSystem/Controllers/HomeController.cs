@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using StudentsFeeSystem.Models;
 
 namespace StudentsFeeSystem.Controllers
@@ -17,7 +18,13 @@ namespace StudentsFeeSystem.Controllers
         {
             return View();
         }
-
+        [Route("Home/DevelopersInfo")]
+        [HttpGet]
+        public IActionResult DevelopersInfo()
+        {
+            return View();
+        }
+        
         public IActionResult Privacy()
         {
             return View();
