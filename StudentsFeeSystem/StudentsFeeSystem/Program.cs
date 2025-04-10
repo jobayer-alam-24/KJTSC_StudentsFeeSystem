@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using QuestPDF.Infrastructure;
 using SQLitePCL;
@@ -10,8 +11,9 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(options =>
         options.UseSqlite("Data Source=StudentDB.db"));
 builder.Services.AddControllersWithViews();
+//builder.WebHost.UseUrls("https://localhost:0");
+builder.WebHost.UseUrls("https://0.0.0.0:5000");
 var app = builder.Build();
-
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
