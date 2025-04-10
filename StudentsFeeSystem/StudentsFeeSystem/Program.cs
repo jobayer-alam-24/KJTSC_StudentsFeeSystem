@@ -11,16 +11,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(options =>
         options.UseSqlite("Data Source=StudentDB.db"));
 builder.Services.AddControllersWithViews();
-//builder.WebHost.UseUrls("https://localhost:0");
-builder.WebHost.UseUrls("https://0.0.0.0:5000");
 var app = builder.Build();
 // Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
-}
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
