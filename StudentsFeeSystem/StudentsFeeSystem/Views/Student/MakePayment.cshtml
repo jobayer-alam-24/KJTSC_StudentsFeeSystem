@@ -1,5 +1,8 @@
 ﻿@using StudentsFeeSystem.ViewModel
 @model ItemListViewModel
+@{
+    ViewData["Title"] = "Select Payment Items";
+}
 <partial name="~/Views/Shared/Common/_TitleNavigationBarPartial.cshtml" model='("Select Payment Items", "/", "Home", "Select Payment Items")'></partial>
 @using (Html.BeginForm("MakePayment", "Student", FormMethod.Post, new { @class = "mt-4" }))
 {
