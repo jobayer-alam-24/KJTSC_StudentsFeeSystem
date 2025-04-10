@@ -9,7 +9,7 @@ QuestPDF.Settings.License = LicenseType.Community;
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(options =>
-        options.UseSqlite(@"Data Source=D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\StudentDB.db"));
+        options.UseSqlite(@"Data Source=D:\TSCDB\StudentDB.db"));
 builder.Services.AddControllersWithViews();
 var app = builder.Build();
 // Configure the HTTP request pipeline.
