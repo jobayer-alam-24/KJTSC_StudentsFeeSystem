@@ -20,7 +20,7 @@ namespace StudentsFeeSystem.Models
 
         [Required(ErrorMessage = "Roll is Required.")]
         [DisplayName("Roll Number")]
-        [Remote(action: "CheckRoll", controller: "Student", AdditionalFields = "IsEdit")]
+        [Remote(action: "CheckRoll", controller: "Student", AdditionalFields = "Class,IsEdit,Id")]
         [Range(1, int.MaxValue, ErrorMessage = "Roll must be a positive number.")]
         public int Roll { get; set; }
         public bool IsEdit { get; set; }

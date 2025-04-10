@@ -297,21 +297,35 @@ namespace StudentsFeeSystem.Controllers
             return RedirectToAction(nameof(List));
         }
 
-        public async Task<JsonResult> CheckRoll(bool isEdit, int roll)
+        [AcceptVerbs("Get", "Post")]
+        public async Task<JsonResult> CheckRoll(int roll, int @class, bool isEdit, int id = 0)
         {
             if (isEdit)
             {
+           
+                bool isRollTaken = await _context.Students
+                    .AnyAsync(s => s.Roll == roll && s.Class == @class && s.Id != id);
+
+                if (isRollTaken)
+                {
+                    return Json("Roll number is already taken in this class!");
+                }
+
                 return Json(true);
             }
 
-            bool isRollTaken = await _context.Students.AnyAsync(s => s.Roll == roll);
-            if (isRollTaken)
+            bool exists = await _context.Students
+                .AnyAsync(s => s.Roll == roll && s.Class == @class);
+
+            if (exists)
             {
-                return Json($"Roll number is already taken!");
+                return Json("Roll number is already taken in this class!");
             }
 
             return Json(true);
         }
+
+
 
         private void BindSelectList()
         {

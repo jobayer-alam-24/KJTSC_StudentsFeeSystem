@@ -14,7 +14,7 @@
                 <div class="card-body">
                     <form asp-action="Edit">
                         <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
-
+                        <input type="hidden" asp-for="Id" />
                         <input type="hidden" asp-for="IsEdit" value="true" />
                         <input type="hidden" asp-for="Fee" value=" @ViewBag.Fees" />
                         @Html.HiddenFor(model => model.HasPaid)

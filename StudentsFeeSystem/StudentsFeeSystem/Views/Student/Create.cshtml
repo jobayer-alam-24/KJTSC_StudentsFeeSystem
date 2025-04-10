@@ -15,8 +15,7 @@
                     <form asp-action="Create">
                         <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
-                        <input type="hidden" name="IsEdit" value="false" />
-
+                        <input type="hidden" asp-for="IsEdit" value="false" />
                         <div class="form-group mb-3">
                             <label asp-for="Name" class="form-label">Student Name</label>
                             <input asp-for="Name" class="form-control" placeholder="Enter student name" />
