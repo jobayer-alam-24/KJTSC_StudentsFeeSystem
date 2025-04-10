@@ -1,72 +1,102 @@
 ﻿@model IEnumerable<StudentsFeeSystem.Models.Student>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Student Fees Management";
 }
-<p>
-    <a asp-action="Create">Create New</a>
-    <a asp-action="ResetFees">RESET</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FathersName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Roll)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Class)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Department)
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FathersName)
-                </td>
-                <td>
-                    @item.Date.ToShortDateString()
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Roll)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Class)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Department)
-                </td>
-                <td>
-                    @if (item.HasPaid)
-                    {
-                        <span>Paid</span>
-                        <a asp-action = "Print" asp-route-id ="@item.Id" target="_blank"> Print Receipt </a> 
-                    }
-                    else
-                    {
-                        <a asp-action="MakePayment" asp-route-id="@item.Id">Make Payment</a>
-                    }
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between mb-3">
+        <a class="btn btn-primary" asp-action="Create">Create New Student</a>
+        <a href="#" class="btn btn-warning" onclick="return confirmReset()">Reset Fees</a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Name)</th>
+                    <th>@Html.DisplayNameFor(model => model.FathersName)</th>
+                    <th>@Html.DisplayNameFor(model => model.Roll)</th>
+                    <th>@Html.DisplayNameFor(model => model.Class)</th>
+                    <th>@Html.DisplayNameFor(model => model.Department)</th>
+                    <th>Payment Status</th> 
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.FathersName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Roll)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Class)</td>
+                        <td>
+                            @{
+                                var department = item.Department.ToString();
+                                if (department == "ITSupport")
+                                {
+                                    department = "IT Support & IOT Basic";
+                                }
+                                else if (department == "Genereal_Electronics")
+                                {
+                                    department = "General Electronics";
+                                }
+                            }
+                            @department
+                        </td>
+                        <td>
+                            @if (item.HasPaid)
+                            {
+                                <span class="badge bg-success">Paid</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">Not Paid</span>
+                            }
+                        </td>
+                        <td class="text-center">
+                            @if (item.HasPaid)
+                            {
+                                <div class="d-inline-block mb-2">
+                                    <a class="btn btn-sm btn-info" asp-action="Print" asp-route-id="@item.Id" target="_blank">Print Receipt</a>
+                                </div>
+                                <div class="d-inline-block mb-2">
+                                    <a class="btn btn-sm btn-secondary" asp-action="ResetFee" asp-route-id="@item.Id" onclick="return confirmReset()">Reset</a>
+                                </div>
+                            }
+                            else
+                            {
+                                <a class="btn btn-sm btn-danger" asp-action="MakePayment" asp-route-id="@item.Id">Make Payment</a>
+                            }
+
+                            <div class="d-inline-block">
+                                <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                <a class="btn btn-sm btn-info" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                                <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure to delete the student?')">Delete</a>
+                            </div>
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@section Scripts
+{
+    <script>
+        function confirmReset() {
+            let myPassword = "123";
+            const password = prompt('Enter admin password to reset fees:');
+            if (password === myPassword) {
+                return window.location.href = '@Url.Action("ResetFees")';
+            } else if (password === null) {
+                return false;
+            } else {
+                alert('Incorrect password!');
+                return false;
+            }
         }
-    </tbody>
-</table>
+    </script>
+}

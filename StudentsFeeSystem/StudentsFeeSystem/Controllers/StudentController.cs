@@ -64,6 +64,7 @@ namespace StudentsFeeSystem.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            BindSelectList();
             return View(student);
         }
 
@@ -126,8 +127,10 @@ namespace StudentsFeeSystem.Controllers
                 Items = new List<Item>
                 {
                     new Item { Id = 1, Name = "Admission Fee", Value = 100 },
-                    new Item { Id = 1, Name = "Tution Fee", Value = 100 },
-                    new Item { Id = 1, Name = "Health Fee", Value = 200 }
+                    new Item { Id = 2, Name = "Tution Fee", Value = 100 },
+                    new Item { Id = 3, Name = "Health Fee", Value = 200 },
+                    new Item { Id = 3, Name = "Cultural Fee", Value = 200 },
+                    new Item { Id = 3, Name = "May day Fee", Value = 200 },
                 }
             };
             return View(model);
@@ -204,30 +207,40 @@ namespace StudentsFeeSystem.Controllers
 
             var student = await _context.Students
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (student == null)
             {
                 return NotFound();
             }
 
-            return View(student);
+            _context.Students.Remove(student);
+            await _context.SaveChangesAsync();  
+
+            return RedirectToAction(nameof(Index));  
         }
 
-        // POST: Student/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+
+
+        [HttpGet]
+        public async Task<IActionResult> ResetFee(int id)
         {
             var student = await _context.Students.FindAsync(id);
-            if (student != null)
+
+            if (student == null)
             {
-                _context.Students.Remove(student);
+                return NotFound();
             }
 
+            student.HasPaid = false;
+            student.Fee = 0;
+
+            _context.Update(student);
             await _context.SaveChangesAsync();
+
+            TempData["Message"] = "Student fee reset successfully.";
             return RedirectToAction(nameof(Index));
         }
 
-        // Check Roll number availability asynchronously
         public async Task<JsonResult> CheckRoll(bool isEdit, int roll)
         {
             if (isEdit)

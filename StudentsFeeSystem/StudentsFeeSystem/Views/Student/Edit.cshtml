@@ -1,57 +1,69 @@
 ﻿@model StudentsFeeSystem.Models.Student
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edit Student";
 }
 
-<h1>Edit</h1>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg">
+                <div class="card-header bg-warning text-white text-center">
+                    <h4>Edit A Student</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
-<h4>Student</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <input type="hidden" name="IsEdit" value="true" />
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+                        <input type="hidden" name="IsEdit" value="false" />
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Name" class="form-label">Student Name</label>
+                            <input asp-for="Name" class="form-control" placeholder="Enter student name" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="FathersName" class="form-label">Father's Name</label>
+                            <input asp-for="FathersName" class="form-control" placeholder="Enter father's name" />
+                            <span asp-validation-for="FathersName" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Roll" class="form-label">Roll Number</label>
+                            <input asp-for="Roll" class="form-control" placeholder="Enter student roll number" />
+                            <span asp-validation-for="Roll" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Class" class="form-label">Class</label>
+                            <input asp-for="Class" class="form-control" placeholder="Enter student class" />
+                            <span asp-validation-for="Class" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Department" class="form-label">Department</label>
+                            <select asp-for="Department" asp-items="@ViewBag.Departments" class="form-control">
+                                <option value="">--Select Student's Department--</option>
+                            </select>
+                            <span asp-validation-for="Department" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <button type="submit" class="btn btn-warning btn-block text-white">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center">
+                    <a asp-action="Index" class="btn btn-secondary text-white">Back to List</a>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="FathersName" class="control-label"></label>
-                <input asp-for="FathersName" class="form-control" />
-                <span asp-validation-for="FathersName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Roll" class="control-label"></label>
-                <input asp-for="Roll" class="form-control" />
-                <span asp-validation-for="Roll" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Class" class="control-label"></label>
-                <input asp-for="Class" class="form-control" />
-                <span asp-validation-for="Class" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Department" class="control-label"></label>
-                <select asp-for="Department" asp-items="@ViewBag.Departments" class="form-control">
-                    <option value="">--Select Your Department--</option>
-                </select>
-                <span asp-validation-for="Department" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

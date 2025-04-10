@@ -1,20 +1,33 @@
 ﻿@using StudentsFeeSystem.ViewModel
 @model ItemListViewModel
 
-@using (Html.BeginForm("MakePayment", "Student", FormMethod.Post))
+@using (Html.BeginForm("MakePayment", "Student", FormMethod.Post, new { @class = "mt-4" }))
 {
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <input type="hidden" value="@ViewBag.StudentId" />
-    for (int i = 0; i < Model.Items.Count; i++)
-    {
-        <div>
-            @Html.HiddenFor(m => m.Items[i].Id)
-            @Html.HiddenFor(m => m.Items[i].Name)
-            @Html.HiddenFor(m => m.Items[i].Value)
-            @Html.CheckBoxFor(m => m.Items[i].IsSelected)
-            @Model.Items[i].Name - @Model.Items[i].Value Tk
-        </div>
-    }
+    @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
 
-    <button type="submit">Pay</button>
+    <input type="hidden" name="StudentId" value="@ViewBag.StudentId" />
+
+    <div class="card shadow-sm p-4">
+        <h4 class="mb-4 text-primary">Select Payment Items</h4>
+
+        <div class="list-group mb-3">
+            @for (int i = 0; i < Model.Items.Count; i++)
+            {
+                <div class="list-group-item d-flex align-items-center justify-content-between">
+                    <div class="form-check">
+                        @Html.CheckBoxFor(m => m.Items[i].IsSelected, new { @class = "form-check-input", id = $"item_{i}" })
+                        <label class="form-check-label" for="item_@i">
+                            @Model.Items[i].Name - <strong>@Model.Items[i].Value</strong> Tk
+                        </label>
+                    </div>
+
+                    @Html.HiddenFor(m => m.Items[i].Id)
+                    @Html.HiddenFor(m => m.Items[i].Name)
+                    @Html.HiddenFor(m => m.Items[i].Value)
+                </div>
+            }
+        </div>
+
+        <button type="submit" class="btn btn-success w-100">Submit</button>
+    </div>
 }
