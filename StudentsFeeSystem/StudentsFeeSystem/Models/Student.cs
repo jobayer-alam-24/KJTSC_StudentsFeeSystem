@@ -23,8 +23,6 @@ namespace StudentsFeeSystem.Models
         [Remote(action: "CheckRoll", controller: "Student", AdditionalFields = "IsEdit")]
         [Range(1, int.MaxValue, ErrorMessage = "Roll must be a positive number.")]
         public int Roll { get; set; }
-
-        [Required(ErrorMessage = "Class is Required.")]
         public bool IsEdit { get; set; }
 
         [Required(ErrorMessage = "Class is Required.")]

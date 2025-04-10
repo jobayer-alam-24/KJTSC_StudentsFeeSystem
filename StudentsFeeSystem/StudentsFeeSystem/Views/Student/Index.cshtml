@@ -24,62 +24,70 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
+                @if (Model.Any())
+                {
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.FathersName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Roll)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Class)</td>
+                            <td>
+                                @{
+                                    var department = item.Department.ToString();
+                                    if (department == "ITSupport")
+                                    {
+                                        department = "IT Support & IOT Basic";
+                                    }
+                                    else if (department == "Genereal_Electronics")
+                                    {
+                                        department = "General Electronics";
+                                    }
+                                }
+                                @department
+                            </td>
+                            <td>
+                                @if (item.HasPaid)
+                                {
+                                    <span class="badge bg-success">Paid</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-danger">Not Paid</span>
+                                }
+                            </td>
+                            <td class="text-center">
+                                @if (item.HasPaid)
+                                {
+                                    <div class="d-inline-block mb-2">
+                                        <a class="btn btn-sm btn-info" asp-action="Print" asp-route-id="@item.Id" target="_blank">Print Receipt</a>
+                                    </div>
+                                    <div class="d-inline-block mb-2">
+                                        <a class="btn btn-sm btn-secondary" asp-action="ResetFee" asp-route-id="@item.Id" onclick="return confirmReset()">Reset</a>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <a class="btn btn-sm btn-danger" asp-action="MakePayment" asp-route-id="@item.Id">Make Payment</a>
+                                }
+                                <div class="d-inline-block">
+                                    <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                    <a class="btn btn-sm btn-info" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure to delete the student?')">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
                 {
                     <tr>
-                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
-                        <td>@Html.DisplayFor(modelItem => item.FathersName)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Roll)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Class)</td>
-                        <td>
-                            @{
-                                var department = item.Department.ToString();
-                                if (department == "ITSupport")
-                                {
-                                    department = "IT Support & IOT Basic";
-                                }
-                                else if (department == "Genereal_Electronics")
-                                {
-                                    department = "General Electronics";
-                                }
-                            }
-                            @department
-                        </td>
-                        <td>
-                            @if (item.HasPaid)
-                            {
-                                <span class="badge bg-success">Paid</span>
-                            }
-                            else
-                            {
-                                <span class="badge bg-danger">Not Paid</span>
-                            }
-                        </td>
-                        <td class="text-center">
-                            @if (item.HasPaid)
-                            {
-                                <div class="d-inline-block mb-2">
-                                    <a class="btn btn-sm btn-info" asp-action="Print" asp-route-id="@item.Id" target="_blank">Print Receipt</a>
-                                </div>
-                                <div class="d-inline-block mb-2">
-                                    <a class="btn btn-sm btn-secondary" asp-action="ResetFee" asp-route-id="@item.Id" onclick="return confirmReset()">Reset</a>
-                                </div>
-                            }
-                            else
-                            {
-                                <a class="btn btn-sm btn-danger" asp-action="MakePayment" asp-route-id="@item.Id">Make Payment</a>
-                            }
-
-                            <div class="d-inline-block">
-                                <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                                <a class="btn btn-sm btn-info" asp-action="Details" asp-route-id="@item.Id">Details</a>
-                                <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure to delete the student?')">Delete</a>
-                            </div>
-                        </td>
-
+                        <td colspan="7" class="text-center text-danger">No students entered yet</td>
                     </tr>
                 }
             </tbody>
+
         </table>
     </div>
 </div>

@@ -88,12 +88,20 @@ namespace StudentsFeeSystem.Controllers
         // POST: Student/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,FathersName,Roll,Class,Date,Department")] Student student)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,FathersName,Roll,Class,Date,Department,HasPaid")] Student student)
         {
             if (id != student.Id)
             {
                 return NotFound();
             }
+
+            var existingStudent = await _context.Students.AsNoTracking().FirstOrDefaultAsync(s => s.Id == id);
+            if (existingStudent == null)
+            {
+                return NotFound();
+            }
+
+            student.HasPaid = existingStudent.HasPaid;
 
             if (ModelState.IsValid)
             {
@@ -118,6 +126,7 @@ namespace StudentsFeeSystem.Controllers
             BindSelectList();
             return View(student);
         }
+
 
         // GET: MakePayment
         public ActionResult MakePayment()
