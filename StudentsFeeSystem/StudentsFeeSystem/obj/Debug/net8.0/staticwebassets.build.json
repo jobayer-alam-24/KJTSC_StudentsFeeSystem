@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "V36VNGyUJndAHLBb7HLn3jSZamgKWtEmGuUNTZThOrI=",
+  "Hash": "2GmRYdFBHPEiHU6rFB0hiIZlu5MVusJUY2ZFywN+f0k=",
   "Source": "StudentsFeeSystem",
   "BasePath": "_content/StudentsFeeSystem",
   "Mode": "Default",
@@ -582,6 +582,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\img\\default-150x150.png"
+    },
+    {
+      "Identity": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\wwwroot\\assets\\img\\Fees.png",
+      "SourceId": "StudentsFeeSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\wwwroot\\",
+      "BasePath": "_content/StudentsFeeSystem",
+      "RelativePath": "assets/img/Fees#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "6ascxdoy2f",
+      "Integrity": "0tDCCRl0zybRE3qifMJEVlaEUJhFViujSLBOrpoLdxs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\Fees.png"
     },
     {
       "Identity": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\wwwroot\\assets\\img\\icons.png",
@@ -4354,6 +4375,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-w0MxDWnj/zJAhVEF3cTbMXPDdmAVsX+Q23GL7kIrqFA="
+        }
+      ]
+    },
+    {
+      "Route": "assets/img/Fees.6ascxdoy2f.png",
+      "AssetFile": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\wwwroot\\assets\\img\\Fees.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "182789"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"0tDCCRl0zybRE3qifMJEVlaEUJhFViujSLBOrpoLdxs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 10 Apr 2025 03:41:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6ascxdoy2f"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/img/Fees.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-0tDCCRl0zybRE3qifMJEVlaEUJhFViujSLBOrpoLdxs="
+        }
+      ]
+    },
+    {
+      "Route": "assets/img/Fees.png",
+      "AssetFile": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\wwwroot\\assets\\img\\Fees.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "182789"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"0tDCCRl0zybRE3qifMJEVlaEUJhFViujSLBOrpoLdxs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 10 Apr 2025 03:41:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-0tDCCRl0zybRE3qifMJEVlaEUJhFViujSLBOrpoLdxs="
         }
       ]
     },

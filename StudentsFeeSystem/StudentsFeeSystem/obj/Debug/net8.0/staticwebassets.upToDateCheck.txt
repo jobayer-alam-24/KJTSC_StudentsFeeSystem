@@ -23,6 +23,7 @@ wwwroot\assets\img\credit\paypal.png
 wwwroot\assets\img\credit\paypal2.png
 wwwroot\assets\img\credit\visa.png
 wwwroot\assets\img\default-150x150.png
+wwwroot\assets\img\Fees.png
 wwwroot\assets\img\icons.png
 wwwroot\assets\img\photo1.png
 wwwroot\assets\img\photo2.png

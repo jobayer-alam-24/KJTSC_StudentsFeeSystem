@@ -3,8 +3,8 @@
 @{
     ViewData["Title"] = "Edit Student";
 }
-
-<div class="container mt-5">
+<partial name="~/Views/Shared/Common/_TitleNavigationBarPartial.cshtml" model='("Edit Student", "/", "Home", "Edit Student")'></partial>
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card shadow-lg">
@@ -16,7 +16,9 @@
                         <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
                         <input type="hidden" asp-for="IsEdit" value="true" />
+                        <input type="hidden" asp-for="Fee" value=" @ViewBag.Fees" />
                         @Html.HiddenFor(model => model.HasPaid)
+
                         <div class="form-group mb-3">
                             <label asp-for="Name" class="form-label">Student Name</label>
                             <input asp-for="Name" class="form-control" placeholder="Enter student name" />

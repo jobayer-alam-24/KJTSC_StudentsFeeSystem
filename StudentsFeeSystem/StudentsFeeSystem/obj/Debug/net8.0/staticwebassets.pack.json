@@ -45,6 +45,10 @@
       "PackagePath": "staticwebassets\\assets\\img\\AdminLTELogo.png"
     },
     {
+      "Id": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\wwwroot\\assets\\img\\Fees.png",
+      "PackagePath": "staticwebassets\\assets\\img\\Fees.png"
+    },
+    {
       "Id": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\wwwroot\\assets\\img\\avatar.png",
       "PackagePath": "staticwebassets\\assets\\img\\avatar.png"
     },

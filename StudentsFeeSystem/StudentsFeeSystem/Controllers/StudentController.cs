@@ -82,6 +82,7 @@ namespace StudentsFeeSystem.Controllers
                 return NotFound();
             }
             BindSelectList();
+            ViewBag.Fees = student.Fee;
             return View(student);
         }
 
@@ -102,7 +103,7 @@ namespace StudentsFeeSystem.Controllers
             }
 
             student.HasPaid = existingStudent.HasPaid;
-
+            student.Fee = existingStudent.Fee;
             if (ModelState.IsValid)
             {
                 try
@@ -134,12 +135,31 @@ namespace StudentsFeeSystem.Controllers
             var model = new ItemListViewModel
             {
                 Items = new List<Item>
-                {
-                    new Item { Id = 1, Name = "Admission Fee", Value = 100 },
-                    new Item { Id = 2, Name = "Tution Fee", Value = 100 },
-                    new Item { Id = 3, Name = "Health Fee", Value = 200 },
-                    new Item { Id = 3, Name = "Cultural Fee", Value = 200 },
-                    new Item { Id = 3, Name = "May day Fee", Value = 200 },
+            {
+                new Item { Id = 1, Name = "Admission Fee", Value =  100 },
+                new Item { Id = 2, Name = "Yearly Admission Fee",   Value = 200 },
+                new Item { Id = 3, Name = "Collateral Fee", Value =     50 },
+                new Item { Id = 4, Name = "Internal Exam Fee", Value =  30 },
+                new Item { Id = 5, Name = "Magazine Fee (Yearly)",  Value = 25 },
+                new Item { Id = 6, Name = "Religious Fund", Value = 10 },
+                new Item { Id = 7, Name = "Rover Scout / Girl Guide     Fees", Value = 15 },
+                new Item { Id = 8, Name = "Registration Fees", Value =  20 },
+                new Item { Id = 9, Name = "Students Medical Test    Fees", Value = 40 },
+                new Item { Id = 10, Name = "Identity Fees", Value =     5 },
+                new Item { Id = 11, Name = "Red Crescent Fees",     Value = 8 },
+                new Item { Id = 12, Name = "Mosque Development Fees",   Value = 12 },
+                new Item { Id = 13, Name = "Games and Cultural Fees",   Value = 18 },
+                new Item { Id = 14, Name = "Credential Fees", Value =   10 },
+                new Item { Id = 15, Name = "Enrolled Student    Certificate Fees", Value = 6 },
+                new Item { Id = 16, Name = "Poor Fund Fees", Value = 5 },
+                new Item { Id = 17, Name = "Night Guard Fees", Value =  3 },
+                new Item { Id = 18, Name = "ICT Fees", Value = 20 },
+                new Item { Id = 19, Name = "Cycle Garage Fees",     Value = 7 },
+                new Item { Id = 20, Name = "Parents Day Fees", Value =  15 },
+                new Item { Id = 21, Name = "Science & Technology    Fees", Value = 10 },
+                new Item { Id = 22, Name = "Education Week Fees",   Value = 8 },
+                new Item { Id = 23, Name = "Literature & Culture    Fees", Value = 12 },
+                new Item { Id = 24, Name = "Others", Value = 5 }
                 }
             };
             return View(model);

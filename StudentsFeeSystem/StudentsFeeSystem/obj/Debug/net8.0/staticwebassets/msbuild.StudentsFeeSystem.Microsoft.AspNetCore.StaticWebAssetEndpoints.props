@@ -300,6 +300,18 @@
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-w0MxDWnj/zJAhVEF3cTbMXPDdmAVsX\u002BQ23GL7kIrqFA="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"339"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022w0MxDWnj/zJAhVEF3cTbMXPDdmAVsX\u002BQ23GL7kIrqFA=\u0022"},{"Name":"Last-Modified","Value":"Wed, 09 Apr 2025 16:16:34 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/StudentsFeeSystem/assets/img/Fees.6ascxdoy2f.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\img\Fees.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"6ascxdoy2f"},{"Name":"integrity","Value":"sha256-0tDCCRl0zybRE3qifMJEVlaEUJhFViujSLBOrpoLdxs="},{"Name":"label","Value":"_content/StudentsFeeSystem/assets/img/Fees.png"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"182789"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u00220tDCCRl0zybRE3qifMJEVlaEUJhFViujSLBOrpoLdxs=\u0022"},{"Name":"Last-Modified","Value":"Thu, 10 Apr 2025 03:41:47 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/StudentsFeeSystem/assets/img/Fees.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\img\Fees.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-0tDCCRl0zybRE3qifMJEVlaEUJhFViujSLBOrpoLdxs="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"182789"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u00220tDCCRl0zybRE3qifMJEVlaEUJhFViujSLBOrpoLdxs=\u0022"},{"Name":"Last-Modified","Value":"Thu, 10 Apr 2025 03:41:47 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/StudentsFeeSystem/assets/img/icons.pgzyby3kf3.png">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\img\icons.png'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>

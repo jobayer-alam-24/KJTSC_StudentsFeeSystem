@@ -905,6 +905,88 @@
       ]
     },
     {
+      "Route": "assets/img/Fees.6ascxdoy2f.png",
+      "AssetFile": "assets/img/Fees.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "182789"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"0tDCCRl0zybRE3qifMJEVlaEUJhFViujSLBOrpoLdxs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 10 Apr 2025 03:41:47 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6ascxdoy2f"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-0tDCCRl0zybRE3qifMJEVlaEUJhFViujSLBOrpoLdxs="
+        },
+        {
+          "Name": "label",
+          "Value": "assets/img/Fees.png"
+        }
+      ]
+    },
+    {
+      "Route": "assets/img/Fees.png",
+      "AssetFile": "assets/img/Fees.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "182789"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"0tDCCRl0zybRE3qifMJEVlaEUJhFViujSLBOrpoLdxs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 10 Apr 2025 03:41:47 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-0tDCCRl0zybRE3qifMJEVlaEUJhFViujSLBOrpoLdxs="
+        }
+      ]
+    },
+    {
       "Route": "assets/img/avatar.cq7ak03cs5.png",
       "AssetFile": "assets/img/avatar.png",
       "Selectors": [],

@@ -1,14 +1,21 @@
 ﻿@using StudentsFeeSystem.ViewModel
 @model ItemListViewModel
-
+<partial name="~/Views/Shared/Common/_TitleNavigationBarPartial.cshtml" model='("Select Payment Items", "/", "Home", "Select Payment Items")'></partial>
 @using (Html.BeginForm("MakePayment", "Student", FormMethod.Post, new { @class = "mt-4" }))
 {
     @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
 
     <input type="hidden" name="StudentId" value="@ViewBag.StudentId" />
 
+    <div class="card shadow-sm mb-4 p-4">
+        <h4 class="text-primary">Total Amount</h4>
+        <p id="totalAmount" class="h5">Tk 0</p>
+    </div>
+
     <div class="card shadow-sm p-4">
         <h4 class="mb-4 text-primary">Select Payment Items</h4>
+
+        <button type="button" class="btn btn-info mb-3" id="selectAllBtn" style="padding: 5px 10px;">Select All</button>
 
         <div class="list-group mb-3">
             @for (int i = 0; i < Model.Items.Count; i++)
@@ -31,3 +38,28 @@
         <button type="submit" class="btn btn-success w-100">Submit</button>
     </div>
 }
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function updateTotalAmount() {
+        var totalAmount = 0;
+        $('.form-check-input').each(function() {
+            if ($(this).prop('checked')) {
+                var value = $(this).closest('.form-check').find('label').text().split('-')[1].trim();
+                totalAmount += parseFloat(value);
+            }
+        });
+        $('#totalAmount').text('Tk ' + totalAmount.toFixed(2));
+    }
+
+    $('.form-check-input').change(function() {
+        updateTotalAmount();
+    });
+
+    $('#selectAllBtn').click(function () {
+        $('.form-check-input').prop('checked', true);
+        updateTotalAmount();
+    });
+
+    updateTotalAmount();
+</script>

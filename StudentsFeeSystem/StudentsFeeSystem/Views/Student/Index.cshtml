@@ -1,13 +1,16 @@
 ﻿@model IEnumerable<StudentsFeeSystem.Models.Student>
-
 @{
     ViewData["Title"] = "Student Fees Management";
 }
+    <partial name="~/Views/Shared/Common/_TitleNavigationBarPartial.cshtml" model='("Student Lists", "/", "Home", "Student List")'></partial>
 
 <div class="container mt-4">
     <div class="d-flex justify-content-between mb-3">
-        <a class="btn btn-primary" asp-action="Create">Create New Student</a>
-        <a href="#" class="btn btn-warning" onclick="return confirmReset()">Reset Fees</a>
+        <a class="btn btn-primary" asp-action="Create">Register New Student</a>
+        @if(Model.Any())
+        {
+            <a href="#" class="btn btn-warning" onclick="return confirmReset()">Reset Fees</a>
+        }
     </div>
 
     <div class="table-responsive">
