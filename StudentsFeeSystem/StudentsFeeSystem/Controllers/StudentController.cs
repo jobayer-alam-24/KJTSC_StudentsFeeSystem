@@ -23,10 +23,35 @@ namespace StudentsFeeSystem.Controllers
         }
 
         // GET: Student
-        public async Task<IActionResult> Index()
+        public IActionResult Index(string searchInput, int? classFilter, string paymentStatusFilter)
         {
-            return View(await _context.Students.ToListAsync());
+            var students = _context.Students.AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchInput))
+            {
+                students = students.Where(s => s.Name.Contains(searchInput) || s.Roll.ToString().Contains(searchInput));
+            }
+
+            if (classFilter.HasValue)
+            {
+                students = students.Where(s => s.Class == classFilter.Value);
+            }
+
+            if (!string.IsNullOrEmpty(paymentStatusFilter))
+            {
+                if (paymentStatusFilter == "Paid")
+                {
+                    students = students.Where(s => s.HasPaid);
+                }
+                else if (paymentStatusFilter == "NotPaid")
+                {
+                    students = students.Where(s => !s.HasPaid);
+                }
+            }
+
+            return View(students.ToList());
         }
+
 
         // GET: Student/Details/5
         public async Task<IActionResult> Details(int? id)
