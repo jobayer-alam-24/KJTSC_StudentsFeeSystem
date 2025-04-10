@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "/+Wq3b3SBspsrSxWuqcWlo2PfU5gTh8V61H1bfQwigo=",
+  "Hash": "BcARuX/7EemnNkbZNi7VLMUZ7YoGKXpBkNYbk7tyNMg=",
   "Source": "StudentsFeeSystem",
   "BasePath": "_content/StudentsFeeSystem",
   "Mode": "Default",
@@ -2257,8 +2257,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "fwhahm2icz",
-      "Integrity": "H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=",
+      "Fingerprint": "06v8f3351h",
+      "Integrity": "OOXvBTAkCDXLTTEijMv3Lp4e69FR/XJZVOoN089wRxA=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.js"
@@ -10857,7 +10857,7 @@
       ]
     },
     {
-      "Route": "lib/jquery/dist/jquery.fwhahm2icz.js",
+      "Route": "lib/jquery/dist/jquery.06v8f3351h.js",
       "AssetFile": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "Selectors": [],
       "ResponseHeaders": [
@@ -10867,7 +10867,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "288580"
+          "Value": "288578"
         },
         {
           "Name": "Content-Type",
@@ -10875,11 +10875,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=\""
+          "Value": "\"OOXvBTAkCDXLTTEijMv3Lp4e69FR/XJZVOoN089wRxA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 08 Apr 2025 13:24:32 GMT"
+          "Value": "Thu, 10 Apr 2025 09:18:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -10889,7 +10889,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "fwhahm2icz"
+          "Value": "06v8f3351h"
         },
         {
           "Name": "label",
@@ -10897,7 +10897,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+          "Value": "sha256-OOXvBTAkCDXLTTEijMv3Lp4e69FR/XJZVOoN089wRxA="
         }
       ]
     },
@@ -10912,7 +10912,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "288580"
+          "Value": "288578"
         },
         {
           "Name": "Content-Type",
@@ -10920,11 +10920,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=\""
+          "Value": "\"OOXvBTAkCDXLTTEijMv3Lp4e69FR/XJZVOoN089wRxA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 08 Apr 2025 13:24:32 GMT"
+          "Value": "Thu, 10 Apr 2025 09:18:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -10934,7 +10934,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+          "Value": "sha256-OOXvBTAkCDXLTTEijMv3Lp4e69FR/XJZVOoN089wRxA="
         }
       ]
     },

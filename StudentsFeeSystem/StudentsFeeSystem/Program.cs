@@ -9,7 +9,7 @@ QuestPDF.Settings.License = LicenseType.Community;
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(options =>
-        options.UseSqlite("Data Source=StudentDB.db"));
+        options.UseSqlite(@"Data Source=D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\StudentDB.db"));
 builder.Services.AddControllersWithViews();
 var app = builder.Build();
 // Configure the HTTP request pipeline.
@@ -23,6 +23,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=List}/{id?}");
 
 app.Run();

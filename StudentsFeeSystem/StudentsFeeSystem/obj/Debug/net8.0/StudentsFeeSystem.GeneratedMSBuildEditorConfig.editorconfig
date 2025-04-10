@@ -32,8 +32,8 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEZXZlbG9wZXJzSW5mby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/KJTSC_StudentsFeeSystem/StudentsFeeSystem/StudentsFeeSystem/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+[D:/KJTSC_StudentsFeeSystem/StudentsFeeSystem/StudentsFeeSystem/Views/Home/List.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/KJTSC_StudentsFeeSystem/StudentsFeeSystem/StudentsFeeSystem/Views/Home/Privacy.cshtml]
@@ -76,8 +76,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/KJTSC_StudentsFeeSystem/StudentsFeeSystem/StudentsFeeSystem/Views/Student/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxJbmRleC5jc2h0bWw=
+[D:/KJTSC_StudentsFeeSystem/StudentsFeeSystem/StudentsFeeSystem/Views/Student/List.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxMaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/KJTSC_StudentsFeeSystem/StudentsFeeSystem/StudentsFeeSystem/Views/Student/MakePayment.cshtml]

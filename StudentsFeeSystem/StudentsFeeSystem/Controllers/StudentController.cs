@@ -23,7 +23,9 @@ namespace StudentsFeeSystem.Controllers
         }
 
         // GET: Student
-        public IActionResult Index(string searchInput, int? classFilter, string paymentStatusFilter)
+        [Route("Student/List")]
+        [HttpGet]
+        public IActionResult List(string searchInput, int? classFilter, string paymentStatusFilter)
         {
             var students = _context.Students.AsQueryable();
 
@@ -71,14 +73,13 @@ namespace StudentsFeeSystem.Controllers
             return View(student);
         }
 
-        // GET: Student/Create
         public IActionResult Create()
         {
             BindSelectList();
             return View();
         }
 
-        // POST: Student/Create
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,FathersName,Roll,Class,Date,Department")] Student student)
@@ -87,13 +88,12 @@ namespace StudentsFeeSystem.Controllers
             {
                 _context.Add(student);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(List));
             }
             BindSelectList();
             return View(student);
         }
 
-        // GET: Student/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -147,7 +147,7 @@ namespace StudentsFeeSystem.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(List));
             }
             BindSelectList();
             return View(student);
@@ -216,10 +216,11 @@ namespace StudentsFeeSystem.Controllers
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(List));
         }
 
         // Print Receipt (Asynchronous)
+
         public async Task<IActionResult> Print(int id)
         {
             var student = await _context.Students.FirstOrDefaultAsync(s => s.Id == id);
@@ -236,6 +237,8 @@ namespace StudentsFeeSystem.Controllers
         }
 
         // Reset all fees to zero asynchronously
+
+    
         public async Task<IActionResult> ResetFees()
         {
             var students = await _context.Students.ToListAsync();
@@ -248,10 +251,10 @@ namespace StudentsFeeSystem.Controllers
 
             await _context.SaveChangesAsync();
             TempData["Message"] = "All fees have been reset to 0 and payment status is set to false.";
-            return RedirectToAction("Index");
+            return RedirectToAction("List");
         }
 
-        // GET: Student/Delete/5
+    
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -270,9 +273,8 @@ namespace StudentsFeeSystem.Controllers
             _context.Students.Remove(student);
             await _context.SaveChangesAsync();  
 
-            return RedirectToAction(nameof(Index));  
+            return RedirectToAction(nameof(List));  
         }
-
 
 
         [HttpGet]
@@ -292,7 +294,7 @@ namespace StudentsFeeSystem.Controllers
             await _context.SaveChangesAsync();
 
             TempData["Message"] = "Student fee reset successfully.";
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(List));
         }
 
         public async Task<JsonResult> CheckRoll(bool isEdit, int roll)
