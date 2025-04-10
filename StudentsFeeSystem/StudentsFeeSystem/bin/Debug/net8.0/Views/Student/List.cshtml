@@ -121,7 +121,7 @@
                 }
                 else
                 {
-                    <tr>
+                    <tr class="no-data">
                         <td colspan="7" class="text-center text-danger">No students entered yet</td>
                     </tr>
                 }
@@ -133,8 +133,13 @@
 @section Scripts
 {
     <script>
-             $(document).ready(function() {
-            var totalStudents = $('#studentTable tbody tr').length;
+           $(document).ready(function() {
+            var totalStudents = $('#studentTable tbody tr').filter(function() {
+            return !$(this).hasClass('no-data');  
+        }).length;
+
+        $('#studentCount').text(totalStudents);
+
             $('#studentCount').text(totalStudents);
             var paidStudents = $('#studentTable tbody tr').filter(function() {
                 return $(this).find('td').eq(5).text().trim() === 'Paid';
