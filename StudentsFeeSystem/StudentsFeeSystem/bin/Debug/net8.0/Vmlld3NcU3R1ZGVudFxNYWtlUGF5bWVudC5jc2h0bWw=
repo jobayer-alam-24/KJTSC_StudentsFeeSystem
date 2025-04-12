@@ -1,9 +1,11 @@
 ﻿@using StudentsFeeSystem.ViewModel
 @model ItemListViewModel
+
 @{
     ViewData["Title"] = "Select Payment Items";
 }
 <partial name="~/Views/Shared/Common/_TitleNavigationBarPartial.cshtml" model='("Select Payment Items", "/", "Home", "Select Payment Items")'></partial>
+
 @using (Html.BeginForm("MakePayment", "Student", FormMethod.Post, new { @class = "mt-4" }))
 {
     @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
@@ -11,21 +13,31 @@
     <input type="hidden" name="StudentId" value="@ViewBag.StudentId" />
 
     <div class="card shadow-sm mb-4 p-4">
-        <h4 class="text-primary">Total Amount</h4>
-        <p id="totalAmount" class="h5">Tk 0</p>
+        <h4 class="text-primary d-flex justify-content-between align-items-center">
+            Total Amount
+            <span id="totalAmount" class="badge bg-success fs-6">Tk 0</span>
+        </h4>
     </div>
 
     <div class="card shadow-sm p-4">
         <h4 class="mb-4 text-primary">Select Payment Items</h4>
 
-        <button type="button" class="btn btn-info mb-3" id="selectAllBtn" style="padding: 5px 10px;">Select All</button>
+        <div class="mb-3">
+            <button type="button" class="btn btn-info me-2" id="selectAllBtn" style="padding: 5px 10px;">Select All</button>
+            <button type="button" class="btn btn-warning" id="deselectAllBtn" style="padding: 5px 10px;">Deselect All</button>
+        </div>
 
         <div class="list-group mb-3">
             @for (int i = 0; i < Model.Items.Count; i++)
             {
                 <div class="list-group-item d-flex align-items-center justify-content-between">
                     <div class="form-check">
-                        @Html.CheckBoxFor(m => m.Items[i].IsSelected, new { @class = "form-check-input", id = $"item_{i}" })
+                        @Html.CheckBoxFor(m => m.Items[i].IsSelected, new
+                            {
+                                @class = "form-check-input item-checkbox",
+                                id = $"item_{i}",
+                                data_value = Model.Items[i].Value
+                            })
                         <label class="form-check-label" for="item_@i">
                             @Model.Items[i].Name - <strong>@Model.Items[i].Value</strong> Tk
                         </label>
@@ -44,25 +56,55 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    function updateTotalAmount() {
-        var totalAmount = 0;
-        $('.form-check-input').each(function() {
-            if ($(this).prop('checked')) {
-                var value = $(this).closest('.form-check').find('label').text().split('-')[1].trim();
-                totalAmount += parseFloat(value);
+    document.addEventListener("DOMContentLoaded", function () {
+        function updateTotalAmount() {
+            let totalAmount = 0;
+            const checkboxes = document.querySelectorAll('.form-check-input');
+
+            // Calculate total based on selected checkboxes
+            checkboxes.forEach(function (checkbox) {
+                if (checkbox.checked) {
+                    const value = parseFloat(checkbox.getAttribute('data_value')) || 0;
+                    totalAmount += value;
+                }
+            });
+
+            // Update the displayed total amount
+            const totalAmountDisplay = document.getElementById('totalAmount');
+            if (totalAmountDisplay) {
+                totalAmountDisplay.textContent = 'Tk ' + totalAmount.toFixed(2);
             }
+        }
+
+        // Initialize the checkboxes and total amount
+        const checkboxes = document.querySelectorAll('.form-check-input');
+        checkboxes.forEach(function (checkbox) {
+            checkbox.addEventListener('change', updateTotalAmount);
         });
-        $('#totalAmount').text('Tk ' + totalAmount.toFixed(2));
-    }
 
-    $('.form-check-input').change(function() {
+        // Select All Button
+        const selectAllBtn = document.getElementById('selectAllBtn');
+        if (selectAllBtn) {
+            selectAllBtn.addEventListener('click', function () {
+                checkboxes.forEach(function (checkbox) {
+                    checkbox.checked = true;
+                });
+                updateTotalAmount();
+            });
+        }
+
+        // Deselect All Button
+        const deselectAllBtn = document.getElementById('deselectAllBtn');
+        if (deselectAllBtn) {
+            deselectAllBtn.addEventListener('click', function () {
+                checkboxes.forEach(function (checkbox) {
+                    checkbox.checked = false;
+                });
+                updateTotalAmount();
+            });
+        }
+
+        // Call updateTotalAmount once on page load to set initial total
         updateTotalAmount();
     });
-
-    $('#selectAllBtn').click(function () {
-        $('.form-check-input').prop('checked', true);
-        updateTotalAmount();
-    });
-
-    updateTotalAmount();
 </script>

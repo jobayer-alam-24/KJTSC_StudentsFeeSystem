@@ -3,7 +3,15 @@
 @{
     ViewData["Title"] = "Register Student";
 }
-<partial name="~/Views/Shared/Common/_TitleNavigationBarPartial.cshtml" model='("Register New Student", "/", "Home", "Register New Student")'></partial>
+    <partial name="~/Views/Shared/Common/_TitleNavigationBarPartial.cshtml" model='("Register New Student", "/", "Home", "Register New Student")'></partial>
+@if (TempData["RoleExistsError"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+        <strong>Error:</strong> @TempData["RoleExistsError"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -15,8 +23,7 @@
                     <form asp-action="Create">
                         <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
-                        <input type="hidden" name="IsEdit" value="false" />
-
+                        <input type="hidden" asp-for="IsEdit" value="false" />
                         <div class="form-group mb-3">
                             <label asp-for="Name" class="form-label">Student Name</label>
                             <input asp-for="Name" class="form-control" placeholder="Enter student name" />
@@ -56,7 +63,7 @@
                     </form>
                 </div>
                 <div class="card-footer text-center">
-                    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                    <a asp-action="List" class="btn btn-secondary">Back to List</a>
                 </div>
             </div>
         </div>

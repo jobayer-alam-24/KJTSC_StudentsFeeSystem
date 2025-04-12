@@ -3,7 +3,15 @@
 @{
     ViewData["Title"] = "Register Student";
 }
-<partial name="~/Views/Shared/Common/_TitleNavigationBarPartial.cshtml" model='("Register New Student", "/", "Home", "Register New Student")'></partial>
+    <partial name="~/Views/Shared/Common/_TitleNavigationBarPartial.cshtml" model='("Register New Student", "/", "Home", "Register New Student")'></partial>
+@if (TempData["RoleExistsError"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+        <strong>Error:</strong> @TempData["RoleExistsError"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">

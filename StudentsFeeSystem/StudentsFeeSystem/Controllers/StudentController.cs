@@ -86,6 +86,18 @@ namespace StudentsFeeSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                bool isInSameRoll = _context.Students
+                .Any(s => s.Class == student.Class
+                && s.Roll == student.Roll
+                && s.Department == student.Department
+                && s.Id != student.Id);
+                if (isInSameRoll)
+                {
+                    TempData["RoleExistsError"] = "Roll already taken in this class & department.";
+                    BindSelectList();
+                    return View(student);
+                }
+
                 _context.Add(student);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(List));
@@ -129,6 +141,20 @@ namespace StudentsFeeSystem.Controllers
 
             student.HasPaid = existingStudent.HasPaid;
             student.Fee = existingStudent.Fee;
+
+            bool isInSameRoll = _context.Students
+                .Any(s => s.Class == student.Class
+                       && s.Roll == student.Roll
+                       && s.Department == student.Department
+                       && s.Id != student.Id);
+
+            if (isInSameRoll)
+            {
+                TempData["RoleExistsError"] = "Roll already taken in this class & department.";
+                BindSelectList();
+                return View(student);
+            }
+
             if (ModelState.IsValid)
             {
                 try
@@ -149,6 +175,7 @@ namespace StudentsFeeSystem.Controllers
                 }
                 return RedirectToAction(nameof(List));
             }
+
             BindSelectList();
             return View(student);
         }
@@ -296,36 +323,6 @@ namespace StudentsFeeSystem.Controllers
             TempData["Message"] = "Student fee reset successfully.";
             return RedirectToAction(nameof(List));
         }
-
-        [AcceptVerbs("Get", "Post")]
-        public async Task<JsonResult> CheckRoll(int roll, int @class, bool isEdit, int id = 0)
-        {
-            if (isEdit)
-            {
-           
-                bool isRollTaken = await _context.Students
-                    .AnyAsync(s => s.Roll == roll && s.Class == @class && s.Id != id);
-
-                if (isRollTaken)
-                {
-                    return Json("Roll number is already taken in this class!");
-                }
-
-                return Json(true);
-            }
-
-            bool exists = await _context.Students
-                .AnyAsync(s => s.Roll == roll && s.Class == @class);
-
-            if (exists)
-            {
-                return Json("Roll number is already taken in this class!");
-            }
-
-            return Json(true);
-        }
-
-
 
         private void BindSelectList()
         {
