@@ -56,53 +56,38 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    $(document).ready(function () {
         function updateTotalAmount() {
             let totalAmount = 0;
-            const checkboxes = document.querySelectorAll('.form-check-input');
 
-            // Calculate total based on selected checkboxes
-            checkboxes.forEach(function (checkbox) {
-                if (checkbox.checked) {
-                    const value = parseFloat(checkbox.getAttribute('data_value')) || 0;
+            // Iterate over all checkboxes
+            $('.form-check-input').each(function () {
+                if ($(this).is(':checked')) {
+                    const value = parseFloat($(this).data('value')) || 0;
                     totalAmount += value;
                 }
             });
 
-            // Update the displayed total amount
-            const totalAmountDisplay = document.getElementById('totalAmount');
-            if (totalAmountDisplay) {
-                totalAmountDisplay.textContent = 'Tk ' + totalAmount.toFixed(2);
-            }
+            // Update the total amount display
+            $('#totalAmount').text('Tk ' + totalAmount.toFixed(2));
         }
 
-        // Initialize the checkboxes and total amount
-        const checkboxes = document.querySelectorAll('.form-check-input');
-        checkboxes.forEach(function (checkbox) {
-            checkbox.addEventListener('change', updateTotalAmount);
+        // Initialize the checkboxes and total amount when page loads
+        $('.form-check-input').change(function () {
+            updateTotalAmount();
         });
 
         // Select All Button
-        const selectAllBtn = document.getElementById('selectAllBtn');
-        if (selectAllBtn) {
-            selectAllBtn.addEventListener('click', function () {
-                checkboxes.forEach(function (checkbox) {
-                    checkbox.checked = true;
-                });
-                updateTotalAmount();
-            });
-        }
+        $('#selectAllBtn').click(function () {
+            $('.form-check-input').prop('checked', true);
+            updateTotalAmount();
+        });
 
         // Deselect All Button
-        const deselectAllBtn = document.getElementById('deselectAllBtn');
-        if (deselectAllBtn) {
-            deselectAllBtn.addEventListener('click', function () {
-                checkboxes.forEach(function (checkbox) {
-                    checkbox.checked = false;
-                });
-                updateTotalAmount();
-            });
-        }
+        $('#deselectAllBtn').click(function () {
+            $('.form-check-input').prop('checked', false);
+            updateTotalAmount();
+        });
 
         // Call updateTotalAmount once on page load to set initial total
         updateTotalAmount();

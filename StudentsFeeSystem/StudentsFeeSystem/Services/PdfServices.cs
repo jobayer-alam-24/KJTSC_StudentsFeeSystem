@@ -9,6 +9,19 @@ namespace StudentsFeeSystem.Services
 {
     public static class PdfService
     {
+        private static string ConvertToBengaliNumber(string input)
+        {
+            var englishDigits = new[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+            var bengaliDigits = new[] { '০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯' };
+
+            var result = input.Select(c =>
+            {
+                var index = Array.IndexOf(englishDigits, c);
+                return index >= 0 ? bengaliDigits[index] : c;
+            });
+
+            return new string(result.ToArray());
+        }
         public static byte[] GenerateReceipts(Student student)
         {
             var document = Document.Create(container =>
@@ -21,6 +34,7 @@ namespace StudentsFeeSystem.Services
 
                     page.Content().Column(col =>
                     {
+                        // First Receipt (Student Copy)
                         col.Item().Element(header =>
                         {
                             header.Row(row =>
@@ -44,14 +58,14 @@ namespace StudentsFeeSystem.Services
                                 row.RelativeColumn().Column(innerCol =>
                                 {
                                     innerCol.Spacing(3);
-                                    innerCol.Item().Text("Government of the People's Republic of Bangladesh")
+                                    innerCol.Item().Text("গণপ্রজাতন্ত্রী বাংলাদেশ")
                                                   .FontSize(12).Bold().AlignCenter();
-                                    innerCol.Item().Text("Kaligonj Government Technical School and College")
+                                    innerCol.Item().Text("কালিগঞ্জ সরকারি টেকনিক্যাল স্কুল ও কলেজ")
                                                   .FontSize(11).Bold().AlignCenter();
-                                    innerCol.Item().Text("Kaligonj, Satkhira")
+                                    innerCol.Item().Text("কালিগঞ্জ, সাতক্ষীরা")
                                                   .FontSize(10).Italic().AlignCenter();
                                     innerCol.Item().PaddingVertical(4).LineHorizontal(1);
-                                    innerCol.Item().Text("Student's Fee Receipt")
+                                    innerCol.Item().Text("শিক্ষার্থীর ফি রসিদ")
                                                   .FontSize(14).Bold().AlignCenter().ParagraphSpacing(8);
                                 });
 
@@ -74,27 +88,25 @@ namespace StudentsFeeSystem.Services
                         });
 
                         col.Item().LineHorizontal(1);
-                        col.Item().Text($"Name: {student.Name}").SemiBold();
-                        col.Item().Text($"Father's Name: {student.FathersName}");
-                        col.Item().Text($"Roll Number: {student.Roll}");
-                        col.Item().Text($"Class: {student.Class}");
-                        col.Item().Text($"Department: {GetDepartmentName(student.Department)}");
-                        col.Item().Text($"Fee Paid: {(student.HasPaid ? "Yes" : "No")}").Bold();
-                        col.Item().Text($"Paid: {student.Fee} TK").Bold();
-                        col.Item().Text($"Receipt Date: {student.Date.ToShortDateString()}");
+                        col.Item().Text($"নাম: {student.Name}").SemiBold();
+                        col.Item().Text($"পিতার নাম: {student.FathersName}");
+                        col.Item().Text($"রোল নম্বর: {ConvertToBengaliNumber(student.Roll.ToString())}");
+                        col.Item().Text($"শ্রেণী: {ConvertToBengaliNumber(student.Class.ToString())}");
+                        col.Item().Text($"বিভাগ: {GetDepartmentName(student.Department)}");
+                        col.Item().Text($"ফি পরিশোধ: {(student.HasPaid ? "হ্যাঁ" : "না")}").Bold();
+                        col.Item().Text($"পরিশোধিত: {ConvertToBengaliNumber(student.Fee.ToString())} টাকা").Bold();
+                        col.Item().Text($"তারিখ: {ConvertToBengaliNumber(student.Date.ToString("dd-MM-yyyy"))}");
                         col.Item().LineHorizontal(1);
-                        col.Item().Text("Thank you for your payment!").AlignCenter().FontSize(12);
+                        col.Item().Text("আপনার পরিশোধের জন্য ধন্যবাদ!").AlignCenter().FontSize(12);
+                        col.Item().PaddingVertical(2);
+                        col.Item().Text("হিসাবরক্ষকের স্বাক্ষর: ____________________").AlignRight();
 
-                        col.Item().PaddingVertical(6);
-                        col.Item().Text("Accountant's Signature: ____________________").AlignRight();
-
-                        // Adding separator line here
+                        // Separator
                         col.Item().Text("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -")
-         .AlignCenter()
-         .FontSize(12);
+                                     .AlignCenter().FontSize(10);
+                        col.Item().PaddingVertical(2);
 
-                        col.Item().PaddingVertical(6);
-
+                        // Second Receipt (Office Copy)
                         col.Item().Element(header =>
                         {
                             header.Row(row =>
@@ -118,14 +130,14 @@ namespace StudentsFeeSystem.Services
                                 row.RelativeColumn().Column(innerCol =>
                                 {
                                     innerCol.Spacing(3);
-                                    innerCol.Item().Text("Government of the People's Republic of Bangladesh")
+                                    innerCol.Item().Text("গণপ্রজাতন্ত্রী বাংলাদেশ")
                                                   .FontSize(12).Bold().AlignCenter();
-                                    innerCol.Item().Text("Kaligonj Government Technical School and College")
+                                    innerCol.Item().Text("কালিগঞ্জ সরকারি টেকনিক্যাল স্কুল ও কলেজ")
                                                   .FontSize(11).Bold().AlignCenter();
-                                    innerCol.Item().Text("Kaligonj, Satkhira")
+                                    innerCol.Item().Text("কালিগঞ্জ, সাতক্ষীরা")
                                                   .FontSize(10).Italic().AlignCenter();
                                     innerCol.Item().PaddingVertical(4).LineHorizontal(1);
-                                    innerCol.Item().Text("Teacher's Fee Receipt")
+                                    innerCol.Item().Text("অফিস ফি রসিদ")
                                                   .FontSize(14).Bold().AlignCenter().ParagraphSpacing(8);
                                 });
 
@@ -148,26 +160,24 @@ namespace StudentsFeeSystem.Services
                         });
 
                         col.Item().LineHorizontal(1);
-                        col.Item().Text($"Name: {student.Name}").SemiBold();
-                        col.Item().Text($"Father's Name: {student.FathersName}");
-                        col.Item().Text($"Roll Number: {student.Roll}");
-                        col.Item().Text($"Class: {student.Class}");
-                        col.Item().Text($"Department: {GetDepartmentName(student.Department)}");
-                        col.Item().Text($"Fee Paid: {(student.HasPaid ? "Yes" : "No")}").Bold();
-                        col.Item().Text($"Paid: {student.Fee} TK").Bold();
-                        col.Item().Text($"Receipt Date: {student.Date.ToShortDateString()}");
+                        col.Item().Text($"নাম: {student.Name}").SemiBold();
+                        col.Item().Text($"পিতার নাম: {student.FathersName}");
+                        col.Item().Text($"রোল নম্বর: {ConvertToBengaliNumber(student.Roll.ToString())}");
+                        col.Item().Text($"শ্রেণী: {ConvertToBengaliNumber(student.Class.ToString())}");
+                        col.Item().Text($"বিভাগ: {GetDepartmentName(student.Department)}");
+                        col.Item().Text($"ফি পরিশোধ: {(student.HasPaid ? "হ্যাঁ" : "না")}").Bold();
+                        col.Item().Text($"পরিশোধিত: {ConvertToBengaliNumber(student.Fee.ToString())} টাকা").Bold();
+                        col.Item().Text($"তারিখ: {ConvertToBengaliNumber(student.Date.ToString("dd-MM-yyyy"))}");
                         col.Item().LineHorizontal(1);
-                        col.Item().Text("Thank you for your payment!").AlignCenter().FontSize(12);
-
+                        col.Item().Text("আপনার পরিশোধের জন্য ধন্যবাদ!").AlignCenter().FontSize(12);
                         col.Item().PaddingVertical(5);
-                        col.Item().Text("Accountant's Signature: ____________________").AlignRight();
+                        col.Item().Text("হিসাবরক্ষকের স্বাক্ষর: ____________________").AlignRight();
                     });
                 });
             });
 
             return document.GeneratePdf();
         }
-
 
         private static string GetDepartmentName(Department department)
         {
@@ -179,5 +189,7 @@ namespace StudentsFeeSystem.Services
                 ? ((System.ComponentModel.DescriptionAttribute)attributes[0]).Description
                 : department.ToString();
         }
+        
+
     }
 }
