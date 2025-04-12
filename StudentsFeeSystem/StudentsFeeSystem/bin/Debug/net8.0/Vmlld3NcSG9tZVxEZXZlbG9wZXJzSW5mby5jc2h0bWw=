@@ -1,5 +1,5 @@
 ﻿@{
-	ViewData["Title"] = "Developers Informarion";
+    ViewData["Title"] = "Developers Information";
 }
 @section Styles
 {
@@ -84,6 +84,9 @@
                         <li>C</li>
                         <li>ASP.NET Framework</li>
                     </ul>
+
+                    <h5 class="section-title text-primary">Education</h5>
+                    <p class="text-muted">Currently studying in Class 10 at Kaligonj Govt. Technical School & College (KJTSC). Department: IT Support & IOT Basics.</p>
 
                     <h5 class="section-title text-primary">Contact Information</h5>
                     <div class="contact-info">

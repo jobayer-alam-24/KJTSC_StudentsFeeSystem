@@ -2,6 +2,15 @@
 @{
     ViewData["Title"] = "Students";
 }
+@section Styles
+{
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+    <style>
+        .dataTables_length {
+            margin-bottom: 20px; 
+        }
+    </style>
+}
 <partial name="~/Views/Shared/Common/_TitleNavigationBarPartial.cshtml" model='("Student Lists", "/", "Home", "Student List")'></partial>
 
 <div class="container mt-4">
@@ -54,7 +63,7 @@
     </form>
 
     <div class="table-responsive">
-        <table class="table table-striped table-bordered table-hover" id="studentTable">
+        <table id="studentTable" class="table table-striped table-bordered table-hover" id="studentTable">
             <thead class="thead-dark">
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.Name)</th>
@@ -136,7 +145,18 @@
 
 @section Scripts
 {
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script>
+            $(document).ready(function() {
+            $('#studentTable').DataTable({
+                "paging": true,  
+                "searching": false, 
+                "ordering": true,  
+                "lengthMenu": [10, 25, 50], 
+                "pageLength": 10 
+            });
+        });
            $(document).ready(function() {
             var totalStudents = $('#studentTable tbody tr').filter(function() {
             return !$(this).hasClass('no-data');  
