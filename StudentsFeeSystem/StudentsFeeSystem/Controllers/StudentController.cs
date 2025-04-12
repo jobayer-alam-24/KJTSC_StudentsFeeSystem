@@ -256,7 +256,7 @@ namespace StudentsFeeSystem.Controllers
                 return NotFound();
             }
 
-            var pdfBytes = PdfService.GenerateStudentReceipt(student);
+            var pdfBytes = PdfService.GenerateReceipts(student);
 
             Response.Headers.Add("Content-Disposition", $"inline; filename=Receipt_{student.Name}.pdf");
 

@@ -69,6 +69,10 @@
       "PackagePath": "staticwebassets\\assets\\img\\avatar5.png"
     },
     {
+      "Id": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\wwwroot\\assets\\img\\bdlogo.png",
+      "PackagePath": "staticwebassets\\assets\\img\\bdlogo.png"
+    },
+    {
       "Id": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\wwwroot\\assets\\img\\boxed-bg.jpg",
       "PackagePath": "staticwebassets\\assets\\img\\boxed-bg.jpg"
     },
