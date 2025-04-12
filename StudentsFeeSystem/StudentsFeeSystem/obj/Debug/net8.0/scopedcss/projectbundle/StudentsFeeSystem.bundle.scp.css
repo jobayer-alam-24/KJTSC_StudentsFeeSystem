@@ -11,7 +11,14 @@ a.navbar-brand[b-jjn073zks2] {
 a[b-jjn073zks2] {
   color: #0077cc;
 }
-
+body.night-mode[b-jjn073zks2] {
+    background-color: #121212;
+    color: white;
+}
+.night-mode button[b-jjn073zks2] {
+    background-color: #444;
+    color: white;
+}
 .btn-primary[b-jjn073zks2] {
   color: #fff;
   background-color: #1b6ec2;

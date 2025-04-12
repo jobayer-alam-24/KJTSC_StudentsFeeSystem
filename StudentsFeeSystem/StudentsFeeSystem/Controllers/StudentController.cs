@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using StudentsFeeSystem.Data;
@@ -25,7 +21,7 @@ namespace StudentsFeeSystem.Controllers
         // GET: Student
         [Route("Student/List")]
         [HttpGet]
-        public IActionResult List(string searchInput, int? classFilter, string paymentStatusFilter)
+        public async Task<IActionResult> List(string searchInput, int? classFilter, string paymentStatusFilter)
         {
             var students = _context.Students.AsQueryable();
 
@@ -50,8 +46,8 @@ namespace StudentsFeeSystem.Controllers
                     students = students.Where(s => !s.HasPaid);
                 }
             }
-
-            return View(students.ToList());
+            CountTotalFee();
+            return View(await students.ToListAsync());
         }
 
 
@@ -100,6 +96,7 @@ namespace StudentsFeeSystem.Controllers
 
                 _context.Add(student);
                 await _context.SaveChangesAsync();
+                CountTotalFee();
                 return RedirectToAction(nameof(List));
             }
             BindSelectList();
@@ -173,6 +170,7 @@ namespace StudentsFeeSystem.Controllers
                         throw;
                     }
                 }
+                CountTotalFee();
                 return RedirectToAction(nameof(List));
             }
 
@@ -242,7 +240,7 @@ namespace StudentsFeeSystem.Controllers
                 _context.Entry(student).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
             }
-
+            CountTotalFee();
             return RedirectToAction(nameof(List));
         }
 
@@ -278,6 +276,7 @@ namespace StudentsFeeSystem.Controllers
 
             await _context.SaveChangesAsync();
             TempData["Message"] = "All fees have been reset to 0 and payment status is set to false.";
+            CountTotalFee();
             return RedirectToAction("List");
         }
 
@@ -298,8 +297,8 @@ namespace StudentsFeeSystem.Controllers
             }
 
             _context.Students.Remove(student);
-            await _context.SaveChangesAsync();  
-
+            await _context.SaveChangesAsync();
+            CountTotalFee();
             return RedirectToAction(nameof(List));  
         }
 
@@ -321,6 +320,7 @@ namespace StudentsFeeSystem.Controllers
             await _context.SaveChangesAsync();
 
             TempData["Message"] = "Student fee reset successfully.";
+            CountTotalFee();
             return RedirectToAction(nameof(List));
         }
 
@@ -334,6 +334,11 @@ namespace StudentsFeeSystem.Controllers
                              Text = EnumHelper.GetDescription(d)
                          });
             ViewBag.Departments = new SelectList(departmentList, "Value", "Text");
+        }
+        private async Task CountTotalFee()
+        {
+            decimal? totalFee = await _context.Students.SumAsync(x => x.Fee);
+            ViewBag.TotalFee = totalFee ?? 0;
         }
         private bool StudentExists(int id)
         {

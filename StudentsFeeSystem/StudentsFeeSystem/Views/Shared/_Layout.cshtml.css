@@ -10,7 +10,14 @@ a.navbar-brand {
 a {
   color: #0077cc;
 }
-
+body.night-mode {
+    background-color: #121212;
+    color: white;
+}
+.night-mode button {
+    background-color: #444;
+    color: white;
+}
 .btn-primary {
   color: #fff;
   background-color: #1b6ec2;

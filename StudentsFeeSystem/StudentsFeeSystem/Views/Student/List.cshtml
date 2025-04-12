@@ -6,14 +6,18 @@
 
 <div class="container mt-4">
     <div class="mb-3">
-        <div class="d-flex justify-content-between alert alert-primary p-3 border rounded">
+        <div class="d-flex justify-content-between alert p-3 border rounded" style="background-color: darkslateblue;">
             <div class="text-center">
-                <h6 class="mb-0">Total Students</h6>
-                <p id="studentCount" class="mb-0 h4 font-weight-bold text-dark">0</p>
+                <h6 class="mb-0 text-white">Total Students</h6>
+                <p id="studentCount" class="mb-0 h4 font-weight-bold text-dark text-white">0</p>
             </div>
             <div class="text-center">
+                <h6 class="mb-0 text-white">Total Amount Collected From Students</h6>
+                <p id="totalFeeCount" class="mb-0 h4 font-weight-bold text-info fw-bolder">@ViewBag.TotalFee<span class="fw-bolder">৳</span></p>
+            </div>
+            <div class="text-center text-white">
                 <h6 class="mb-0">Paid Students</h6>
-                <p id="paidCount" class="mb-0 h4 font-weight-bold text-success">0</p>
+                <p id="paidCount" class="mb-0 h4 font-weight-bold">0</p>
             </div>
         </div>
     </div>
@@ -21,9 +25,9 @@
 
     <div class="d-flex justify-content-between mb-3">
         <a class="btn btn-primary" asp-action="Create">Register New Student</a>
-        @if (Model.Any())
+        @if (Model.Any(x => x.HasPaid))
         {
-            <a href="#" class="btn btn-warning" onclick="return confirmReset()">Reset Fees</a>
+            <a href="#" class="btn btn-warning" onclick="return confirmReset()">Reset All Fees</a>
         }
     </div>
     <form method="get" asp-action="List" class="d-flex justify-content-between mb-3">
