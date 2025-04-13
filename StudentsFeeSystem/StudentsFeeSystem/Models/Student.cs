@@ -46,6 +46,7 @@ namespace StudentsFeeSystem.Models
     }
     public enum Department
     { 
+        NONE,
         Farm,
         Machinery,
         [Description("IT Support & IOT Basics")]

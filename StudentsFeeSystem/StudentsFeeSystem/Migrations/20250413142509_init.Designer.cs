@@ -11,8 +11,8 @@ using StudentsFeeSystem.Data;
 namespace StudentsFeeSystem.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250408161058_paidcol")]
-    partial class paidcol
+    [Migration("20250413142509_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,13 +37,24 @@ namespace StudentsFeeSystem.Migrations
 
                     b.Property<string>("FathersName")
                         .IsRequired()
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
+
+                    b.Property<decimal?>("Fee")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Gender")
+                        .HasColumnType("INTEGER");
 
                     b.Property<bool>("HasPaid")
                         .HasColumnType("INTEGER");
 
+                    b.Property<bool>("IsEdit")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Name")
                         .IsRequired()
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Roll")

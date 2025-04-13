@@ -97,7 +97,6 @@ namespace StudentsFeeSystem.Controllers
                     BindSelectList();
                     return View(student);
                 }
-
                 _context.Add(student);
                 await _context.SaveChangesAsync();
                 await CountTotalFee();

@@ -120,7 +120,7 @@ namespace StudentsFeeSystem.Services
                             col.Item().Text($"পিতার নাম: {student.FathersName}");
                             col.Item().Text($"রোল নম্বর: {ConvertToBengaliNumber(student.Roll.ToString())}");
                             col.Item().Text($"শ্রেণী: {ConvertToBengaliNumber(student.Class.ToString())}");
-                            col.Item().Text($"বিভাগ: {GetDepartmentName(student.Department)}");
+                            if (student.Department != Department.NONE)
                             col.Item().Text($"ফি পরিশোধ: {(student.HasPaid ? "হ্যাঁ" : "না")}").Bold();
                             col.Item().Text($"পরিশোধিত: {ConvertToBengaliNumber(student.Fee.ToString())} টাকা").Bold();
                             col.Item().Text($"তারিখ: {ConvertToBengaliNumber(student.Date.ToString("dd-MM-yyyy"))}");
@@ -194,7 +194,7 @@ namespace StudentsFeeSystem.Services
                             col.Item().Text($"পিতার নাম: {student.FathersName}");
                             col.Item().Text($"রোল নম্বর: {ConvertToBengaliNumber(student.Roll.ToString())}");
                             col.Item().Text($"শ্রেণী: {ConvertToBengaliNumber(student.Class.ToString())}");
-                            col.Item().Text($"বিভাগ: {GetDepartmentName(student.Department)}");
+                            if (student.Department != Department.NONE)
                             col.Item().Text($"ফি পরিশোধ: {(student.HasPaid ? "হ্যাঁ" : "না")}").Bold();
                             col.Item().Text($"পরিশোধিত: {ConvertToBengaliNumber(student.Fee.ToString())} টাকা").Bold();
                             col.Item().Text($"তারিখ: {ConvertToBengaliNumber(student.Date.ToString("dd-MM-yyyy"))}");
