@@ -21,7 +21,7 @@ namespace StudentsFeeSystem.Controllers
         // GET: Student
         [Route("Student/List")]
         [HttpGet]
-        public async Task<IActionResult> List(string searchInput, int? classFilter, string paymentStatusFilter)
+        public async Task<IActionResult> List(string searchInput, int? classFilter, string paymentStatusFilter, string genderFilter)
         {
             var students = _context.Students.AsQueryable();
 
@@ -45,6 +45,10 @@ namespace StudentsFeeSystem.Controllers
                 {
                     students = students.Where(s => !s.HasPaid);
                 }
+            }
+            if (!string.IsNullOrEmpty(genderFilter))
+            {
+                students = students.Where(s => s.Gender.ToString() == genderFilter);
             }
             CountTotalFee();
             return View(await students.ToListAsync());
@@ -78,7 +82,7 @@ namespace StudentsFeeSystem.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,FathersName,Roll,Class,Date,Department")] Student student)
+        public async Task<IActionResult> Create([Bind("Id,Name,FathersName,Roll,Class,Date,Department,Gender")] Student student)
         {
             if (ModelState.IsValid)
             {
@@ -123,7 +127,7 @@ namespace StudentsFeeSystem.Controllers
         // POST: Student/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,FathersName,Roll,Class,Date,Department,HasPaid")] Student student)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,FathersName,Roll,Class,Date,Department,HasPaid,Gender")] Student student)
         {
             if (id != student.Id)
             {
@@ -138,7 +142,6 @@ namespace StudentsFeeSystem.Controllers
 
             student.HasPaid = existingStudent.HasPaid;
             student.Fee = existingStudent.Fee;
-
             bool isInSameRoll = _context.Students
                 .Any(s => s.Class == student.Class
                        && s.Roll == student.Roll

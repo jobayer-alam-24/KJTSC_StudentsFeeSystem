@@ -38,6 +38,9 @@ namespace StudentsFeeSystem.Models
         [Required(ErrorMessage = "Department is Required.")]
         [Display(Name = "Department")]
         public bool HasPaid { get; set; } = false;
+        [Required(ErrorMessage = "Gender is required.")]
+        [Display(Name = "Gender")]
+        public Gender Gender { get; set; }
 
         public Department Department { get; set; }
     }
@@ -51,5 +54,11 @@ namespace StudentsFeeSystem.Models
         Genereal_Electronics,
         Automobile
     }
+    public enum Gender
+    {
+        Male,
+        Female
+    }
+
 
 }

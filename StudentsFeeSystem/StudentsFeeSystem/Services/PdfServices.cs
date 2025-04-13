@@ -4,6 +4,7 @@ using QuestPDF.Infrastructure;
 using StudentsFeeSystem.Models;
 using System;
 using System.IO;
+using System.Linq;
 
 namespace StudentsFeeSystem.Services
 {
@@ -22,6 +23,7 @@ namespace StudentsFeeSystem.Services
 
             return new string(result.ToArray());
         }
+
         public static byte[] GenerateReceipts(Student student)
         {
             var document = Document.Create(container =>
@@ -32,146 +34,175 @@ namespace StudentsFeeSystem.Services
                     page.Margin(1.5f, Unit.Centimetre);
                     page.DefaultTextStyle(x => x.FontSize(10));
 
-                    page.Content().Column(col =>
+                    var watermarkPath = "wwwroot/assets/img/bdlogo.png";
+                    var modifiedWatermarkPath = "wwwroot/assets/img/bdlogo_semi_transparent.png";
+                    var modifiedWatermarkPath2 = "wwwroot/assets/img/bdlogo_semi_transparent_2.png";
+
+                   
+                    if (!File.Exists(modifiedWatermarkPath))
                     {
-                        // First Receipt (Student Copy)
-                        col.Item().Element(header =>
+                        ImageHelper.CreateSemiTransparentImage(watermarkPath, modifiedWatermarkPath, 0.01f);
+                    }
+
+                    
+                    if (!File.Exists(modifiedWatermarkPath2))
+                    {
+                        ImageHelper.CreateSemiTransparentImage(watermarkPath, modifiedWatermarkPath2, 0.2f);
+                    }
+
+                    byte[] imageBytes = File.Exists(modifiedWatermarkPath) ? File.ReadAllBytes(modifiedWatermarkPath) : null;
+                    byte[] imageBytes2 = File.Exists(modifiedWatermarkPath2) ? File.ReadAllBytes(modifiedWatermarkPath2) : null;
+
+                    page.Content().Layers(layers =>
+                    {
+                        
+                        if (imageBytes != null)
                         {
-                            header.Row(row =>
+                            layers.Layer()
+                                .AlignCenter()
+                                .AlignMiddle()
+                                .Image(imageBytes, ImageScaling.FitArea);
+                        }
+
+                        // Main content layer
+                        layers.PrimaryLayer().Column(col =>
+                        {
+                            col.Item().Element(header =>
                             {
-                                row.ConstantColumn(50).Element(logo =>
+                                header.Row(row =>
                                 {
-                                    var logoPath = "wwwroot/assets/img/bteblog.png";
-                                    if (File.Exists(logoPath))
+                                    row.ConstantColumn(50).Element(logo =>
                                     {
-                                        var imageBytes = File.ReadAllBytes(logoPath);
-                                        logo.Element(x => x
-                                            .AlignCenter()
-                                            .Padding(2)
-                                            .Width(40)
-                                            .Height(40)
-                                            .Image(imageBytes, ImageScaling.FitArea)
-                                        );
-                                    }
-                                });
+                                        var logoPath = "wwwroot/assets/img/bteblog.png";
+                                        if (File.Exists(logoPath))
+                                        {
+                                            var logoBytes = File.ReadAllBytes(logoPath);
+                                            logo.Element(x => x
+                                                .AlignCenter()
+                                                .Padding(2)
+                                                .Width(40)
+                                                .Height(40)
+                                                .Image(logoBytes, ImageScaling.FitArea)
+                                            );
+                                        }
+                                    });
 
-                                row.RelativeColumn().Column(innerCol =>
-                                {
-                                    innerCol.Spacing(3);
-                                    innerCol.Item().Text("গণপ্রজাতন্ত্রী বাংলাদেশ")
-                                                  .FontSize(12).Bold().AlignCenter();
-                                    innerCol.Item().Text("কালিগঞ্জ সরকারি টেকনিক্যাল স্কুল ও কলেজ")
-                                                  .FontSize(11).Bold().AlignCenter();
-                                    innerCol.Item().Text("কালিগঞ্জ, সাতক্ষীরা")
-                                                  .FontSize(10).Italic().AlignCenter();
-                                    innerCol.Item().PaddingVertical(4).LineHorizontal(1);
-                                    innerCol.Item().Text("শিক্ষার্থীর ফি রসিদ")
-                                                  .FontSize(14).Bold().AlignCenter().ParagraphSpacing(8);
-                                });
-
-                                row.ConstantColumn(50).Element(logo =>
-                                {
-                                    var logoPath = "wwwroot/assets/img/bdlogo.png";
-                                    if (File.Exists(logoPath))
+                                    row.RelativeColumn().Column(innerCol =>
                                     {
-                                        var imageBytes = File.ReadAllBytes(logoPath);
-                                        logo.Element(x => x
-                                            .AlignCenter()
-                                            .Padding(2)
-                                            .Width(40)
-                                            .Height(40)
-                                            .Image(imageBytes, ImageScaling.FitArea)
-                                        );
-                                    }
+                                        innerCol.Spacing(3);
+                                        innerCol.Item().Text("গণপ্রজাতন্ত্রী বাংলাদেশ").FontSize(12).Bold().AlignCenter();
+                                        innerCol.Item().Text("কালিগঞ্জ সরকারি টেকনিক্যাল স্কুল ও কলেজ").FontSize(11).Bold().AlignCenter();
+                                        innerCol.Item().Text("কালিগঞ্জ, সাতক্ষীরা").FontSize(10).Italic().AlignCenter();
+                                        innerCol.Item().PaddingVertical(4).LineHorizontal(1);
+                                        innerCol.Item().Text("শিক্ষার্থীর ফি রসিদ").FontSize(14).Bold().AlignCenter().ParagraphSpacing(8);
+                                    });
+
+                                    row.ConstantColumn(50).Element(logo =>
+                                    {
+                                        var logoPath = "wwwroot/assets/img/bdlogo.png";
+                                        if (File.Exists(logoPath))
+                                        {
+                                            var logoBytes = File.ReadAllBytes(logoPath);
+                                            logo.Element(x => x
+                                                .AlignCenter()
+                                                .Padding(2)
+                                                .Width(40)
+                                                .Height(40)
+                                                .Image(logoBytes, ImageScaling.FitArea)
+                                            );
+                                        }
+                                    });
                                 });
                             });
-                        });
 
-                        col.Item().LineHorizontal(1);
-                        col.Item().Text($"নাম: {student.Name}").SemiBold();
-                        col.Item().Text($"পিতার নাম: {student.FathersName}");
-                        col.Item().Text($"রোল নম্বর: {ConvertToBengaliNumber(student.Roll.ToString())}");
-                        col.Item().Text($"শ্রেণী: {ConvertToBengaliNumber(student.Class.ToString())}");
-                        col.Item().Text($"বিভাগ: {GetDepartmentName(student.Department)}");
-                        col.Item().Text($"ফি পরিশোধ: {(student.HasPaid ? "হ্যাঁ" : "না")}").Bold();
-                        col.Item().Text($"পরিশোধিত: {ConvertToBengaliNumber(student.Fee.ToString())} টাকা").Bold();
-                        col.Item().Text($"তারিখ: {ConvertToBengaliNumber(student.Date.ToString("dd-MM-yyyy"))}");
-                        col.Item().LineHorizontal(1);
-                        col.Item().Text("আপনার পরিশোধের জন্য ধন্যবাদ!").AlignCenter().FontSize(12);
-                        col.Item().PaddingVertical(2);
-                        col.Item().Text("হিসাবরক্ষকের স্বাক্ষর: ____________________").AlignRight();
+                            col.Item().LineHorizontal(1);
+                            col.Item().Text($"নাম: {student.Name}").SemiBold();
+                            col.Item().Text($"পিতার নাম: {student.FathersName}");
+                            col.Item().Text($"রোল নম্বর: {ConvertToBengaliNumber(student.Roll.ToString())}");
+                            col.Item().Text($"শ্রেণী: {ConvertToBengaliNumber(student.Class.ToString())}");
+                            col.Item().Text($"বিভাগ: {GetDepartmentName(student.Department)}");
+                            col.Item().Text($"ফি পরিশোধ: {(student.HasPaid ? "হ্যাঁ" : "না")}").Bold();
+                            col.Item().Text($"পরিশোধিত: {ConvertToBengaliNumber(student.Fee.ToString())} টাকা").Bold();
+                            col.Item().Text($"তারিখ: {ConvertToBengaliNumber(student.Date.ToString("dd-MM-yyyy"))}");
+                            col.Item().LineHorizontal(1);
+                            col.Item().Text("আপনার পরিশোধের জন্য ধন্যবাদ!").AlignCenter().FontSize(12);
+                            col.Item().PaddingVertical(2);
+                            col.Item().Text("হিসাবরক্ষকের স্বাক্ষর: ____________________").AlignRight();
 
-                        // Separator
-                        col.Item().Text("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -")
-                                     .AlignCenter().FontSize(10);
-                        col.Item().PaddingVertical(2);
+                            col.Item().Text("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -").AlignCenter().FontSize(10);
+                            col.Item().PaddingVertical(2);
 
-                        // Second Receipt (Office Copy)
-                        col.Item().Element(header =>
-                        {
-                            header.Row(row =>
+                            // Add second watermark in the background layer for the second receipt
+                            if (imageBytes2 != null)
                             {
-                                row.ConstantColumn(50).Element(logo =>
-                                {
-                                    var logoPath = "wwwroot/assets/img/bteblog.png";
-                                    if (File.Exists(logoPath))
-                                    {
-                                        var imageBytes = File.ReadAllBytes(logoPath);
-                                        logo.Element(x => x
-                                            .AlignCenter()
-                                            .Padding(2)
-                                            .Width(40)
-                                            .Height(40)
-                                            .Image(imageBytes, ImageScaling.FitArea)
-                                        );
-                                    }
-                                });
+                                layers.Layer()
+                                    .AlignCenter()
+                                    .AlignMiddle()
+                                    .Image(imageBytes2, ImageScaling.FitArea);
+                            }
 
-                                row.RelativeColumn().Column(innerCol =>
+                            col.Item().Element(header =>
+                            {
+                                header.Row(row =>
                                 {
-                                    innerCol.Spacing(3);
-                                    innerCol.Item().Text("গণপ্রজাতন্ত্রী বাংলাদেশ")
-                                                  .FontSize(12).Bold().AlignCenter();
-                                    innerCol.Item().Text("কালিগঞ্জ সরকারি টেকনিক্যাল স্কুল ও কলেজ")
-                                                  .FontSize(11).Bold().AlignCenter();
-                                    innerCol.Item().Text("কালিগঞ্জ, সাতক্ষীরা")
-                                                  .FontSize(10).Italic().AlignCenter();
-                                    innerCol.Item().PaddingVertical(4).LineHorizontal(1);
-                                    innerCol.Item().Text("অফিস ফি রসিদ")
-                                                  .FontSize(14).Bold().AlignCenter().ParagraphSpacing(8);
-                                });
-
-                                row.ConstantColumn(50).Element(logo =>
-                                {
-                                    var logoPath = "wwwroot/assets/img/bdlogo.png";
-                                    if (File.Exists(logoPath))
+                                    row.ConstantColumn(50).Element(logo =>
                                     {
-                                        var imageBytes = File.ReadAllBytes(logoPath);
-                                        logo.Element(x => x
-                                            .AlignCenter()
-                                            .Padding(2)
-                                            .Width(40)
-                                            .Height(40)
-                                            .Image(imageBytes, ImageScaling.FitArea)
-                                        );
-                                    }
+                                        var logoPath = "wwwroot/assets/img/bteblog.png";
+                                        if (File.Exists(logoPath))
+                                        {
+                                            var logoBytes = File.ReadAllBytes(logoPath);
+                                            logo.Element(x => x
+                                                .AlignCenter()
+                                                .Padding(2)
+                                                .Width(40)
+                                                .Height(40)
+                                                .Image(logoBytes, ImageScaling.FitArea)
+                                            );
+                                        }
+                                    });
+
+                                    row.RelativeColumn().Column(innerCol =>
+                                    {
+                                        innerCol.Spacing(3);
+                                        innerCol.Item().Text("গণপ্রজাতন্ত্রী বাংলাদেশ").FontSize(12).Bold().AlignCenter();
+                                        innerCol.Item().Text("কালিগঞ্জ সরকারি টেকনিক্যাল স্কুল ও কলেজ").FontSize(11).Bold().AlignCenter();
+                                        innerCol.Item().Text("কালিগঞ্জ, সাতক্ষীরা").FontSize(10).Italic().AlignCenter();
+                                        innerCol.Item().PaddingVertical(4).LineHorizontal(1);
+                                        innerCol.Item().Text("অফিস ফি রসিদ").FontSize(14).Bold().AlignCenter().ParagraphSpacing(8);
+                                    });
+
+                                    row.ConstantColumn(50).Element(logo =>
+                                    {
+                                        var logoPath = "wwwroot/assets/img/bdlogo.png";
+                                        if (File.Exists(logoPath))
+                                        {
+                                            var logoBytes = File.ReadAllBytes(logoPath);
+                                            logo.Element(x => x
+                                                .AlignCenter()
+                                                .Padding(2)
+                                                .Width(40)
+                                                .Height(40)
+                                                .Image(logoBytes, ImageScaling.FitArea)
+                                            );
+                                        }
+                                    });
                                 });
                             });
-                        });
 
-                        col.Item().LineHorizontal(1);
-                        col.Item().Text($"নাম: {student.Name}").SemiBold();
-                        col.Item().Text($"পিতার নাম: {student.FathersName}");
-                        col.Item().Text($"রোল নম্বর: {ConvertToBengaliNumber(student.Roll.ToString())}");
-                        col.Item().Text($"শ্রেণী: {ConvertToBengaliNumber(student.Class.ToString())}");
-                        col.Item().Text($"বিভাগ: {GetDepartmentName(student.Department)}");
-                        col.Item().Text($"ফি পরিশোধ: {(student.HasPaid ? "হ্যাঁ" : "না")}").Bold();
-                        col.Item().Text($"পরিশোধিত: {ConvertToBengaliNumber(student.Fee.ToString())} টাকা").Bold();
-                        col.Item().Text($"তারিখ: {ConvertToBengaliNumber(student.Date.ToString("dd-MM-yyyy"))}");
-                        col.Item().LineHorizontal(1);
-                        col.Item().Text("আপনার পরিশোধের জন্য ধন্যবাদ!").AlignCenter().FontSize(12);
-                        col.Item().PaddingVertical(5);
-                        col.Item().Text("হিসাবরক্ষকের স্বাক্ষর: ____________________").AlignRight();
+                            col.Item().LineHorizontal(1);
+                            col.Item().Text($"নাম: {student.Name}").SemiBold();
+                            col.Item().Text($"পিতার নাম: {student.FathersName}");
+                            col.Item().Text($"রোল নম্বর: {ConvertToBengaliNumber(student.Roll.ToString())}");
+                            col.Item().Text($"শ্রেণী: {ConvertToBengaliNumber(student.Class.ToString())}");
+                            col.Item().Text($"বিভাগ: {GetDepartmentName(student.Department)}");
+                            col.Item().Text($"ফি পরিশোধ: {(student.HasPaid ? "হ্যাঁ" : "না")}").Bold();
+                            col.Item().Text($"পরিশোধিত: {ConvertToBengaliNumber(student.Fee.ToString())} টাকা").Bold();
+                            col.Item().Text($"তারিখ: {ConvertToBengaliNumber(student.Date.ToString("dd-MM-yyyy"))}");
+                            col.Item().LineHorizontal(1);
+                            col.Item().Text("আপনার পরিশোধের জন্য ধন্যবাদ!").AlignCenter().FontSize(12);
+                            col.Item().PaddingVertical(5);
+                            col.Item().Text("হিসাবরক্ষকের স্বাক্ষর: ____________________").AlignRight();
+                        });
                     });
                 });
             });
@@ -189,7 +220,5 @@ namespace StudentsFeeSystem.Services
                 ? ((System.ComponentModel.DescriptionAttribute)attributes[0]).Description
                 : department.ToString();
         }
-        
-
     }
 }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "0bnh+CY2NaFjo5O+7+8Kob2Hivk56YApJty030gSWIA=",
+  "Hash": "tkQ0wGEUPqmiRQhqeKrhYynlDUWdxOs9TJ2tI8wKBOU=",
   "Source": "StudentsFeeSystem",
   "BasePath": "_content/StudentsFeeSystem",
   "Mode": "Default",
@@ -393,6 +393,48 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\img\\bdlogo.png"
+    },
+    {
+      "Identity": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\wwwroot\\assets\\img\\bdlogo_semi_transparent.png",
+      "SourceId": "StudentsFeeSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\wwwroot\\",
+      "BasePath": "_content/StudentsFeeSystem",
+      "RelativePath": "assets/img/bdlogo_semi_transparent#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "b6h0clsp83",
+      "Integrity": "81bROJlCBCMX2I8QyneJX9wKvOPiNqYyBEjterdbgKE=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\bdlogo_semi_transparent.png"
+    },
+    {
+      "Identity": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\wwwroot\\assets\\img\\bdlogo_semi_transparent_2.png",
+      "SourceId": "StudentsFeeSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\wwwroot\\",
+      "BasePath": "_content/StudentsFeeSystem",
+      "RelativePath": "assets/img/bdlogo_semi_transparent_2#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ib6io2sjac",
+      "Integrity": "ftDnjvgBMq503StW92AH4Vp051xO/WKPKyzcTABJ7d4=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\bdlogo_semi_transparent_2.png"
     },
     {
       "Identity": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\wwwroot\\assets\\img\\boxed-bg.jpg",
@@ -3658,6 +3700,170 @@
         {
           "Name": "integrity",
           "Value": "sha256-ER4dgpAIVsvzLpbt8QKICdqAKyXMQJ2GIU1hDONQGAQ="
+        }
+      ]
+    },
+    {
+      "Route": "assets/img/bdlogo_semi_transparent.b6h0clsp83.png",
+      "AssetFile": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\wwwroot\\assets\\img\\bdlogo_semi_transparent.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "92631"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"81bROJlCBCMX2I8QyneJX9wKvOPiNqYyBEjterdbgKE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 13 Apr 2025 12:17:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "b6h0clsp83"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/img/bdlogo_semi_transparent.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-81bROJlCBCMX2I8QyneJX9wKvOPiNqYyBEjterdbgKE="
+        }
+      ]
+    },
+    {
+      "Route": "assets/img/bdlogo_semi_transparent.png",
+      "AssetFile": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\wwwroot\\assets\\img\\bdlogo_semi_transparent.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "92631"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"81bROJlCBCMX2I8QyneJX9wKvOPiNqYyBEjterdbgKE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 13 Apr 2025 12:17:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-81bROJlCBCMX2I8QyneJX9wKvOPiNqYyBEjterdbgKE="
+        }
+      ]
+    },
+    {
+      "Route": "assets/img/bdlogo_semi_transparent_2.ib6io2sjac.png",
+      "AssetFile": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\wwwroot\\assets\\img\\bdlogo_semi_transparent_2.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "125488"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ftDnjvgBMq503StW92AH4Vp051xO/WKPKyzcTABJ7d4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 13 Apr 2025 12:19:33 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ib6io2sjac"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/img/bdlogo_semi_transparent_2.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ftDnjvgBMq503StW92AH4Vp051xO/WKPKyzcTABJ7d4="
+        }
+      ]
+    },
+    {
+      "Route": "assets/img/bdlogo_semi_transparent_2.png",
+      "AssetFile": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\wwwroot\\assets\\img\\bdlogo_semi_transparent_2.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "125488"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ftDnjvgBMq503StW92AH4Vp051xO/WKPKyzcTABJ7d4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 13 Apr 2025 12:19:33 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ftDnjvgBMq503StW92AH4Vp051xO/WKPKyzcTABJ7d4="
         }
       ]
     },

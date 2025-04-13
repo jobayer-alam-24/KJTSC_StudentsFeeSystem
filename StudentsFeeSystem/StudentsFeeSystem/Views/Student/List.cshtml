@@ -57,6 +57,11 @@
                 <option value="Paid">Paid</option>
                 <option value="NotPaid">Not Paid</option>
             </select>
+            <select id="genderFilter" name="genderFilter" class="form-control me-3" style="min-width: 150px;">
+                <option value="">Filter by Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
 
             <button type="submit" class="btn btn-primary ml-2">Search</button>
         </div>
@@ -70,6 +75,7 @@
                     <th>@Html.DisplayNameFor(model => model.FathersName)</th>
                     <th>@Html.DisplayNameFor(model => model.Roll)</th>
                     <th>@Html.DisplayNameFor(model => model.Class)</th>
+                    <th>@Html.DisplayNameFor(model => model.Gender)</th>
                     <th>@Html.DisplayNameFor(model => model.Department)</th>
                     <th>Payment Status</th>
                     <th class="text-center">Actions</th>
@@ -85,6 +91,7 @@
                             <td>@Html.DisplayFor(modelItem => item.FathersName)</td>
                             <td>@Html.DisplayFor(modelItem => item.Roll)</td>
                             <td>@Html.DisplayFor(modelItem => item.Class)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Gender)</td>
                             <td>
                                 @{
                                     var department = item.Department.ToString();
@@ -165,10 +172,10 @@
         $('#studentCount').text(totalStudents);
 
             $('#studentCount').text(totalStudents);
-            var paidStudents = $('#studentTable tbody tr').filter(function() {
-                return $(this).find('td').eq(5).text().trim() === 'Paid';
-            }).length;
-            $('#paidCount').text(paidStudents);
+                var paidStudents = $('#studentTable tbody tr').filter(function() {
+            return $(this).find('td').eq(6).text().trim() === 'Paid';
+        }).length;
+        $('#paidCount').text(paidStudents);
         });
 
         function confirmReset() {

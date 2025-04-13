@@ -14,6 +14,8 @@ wwwroot\assets\img\avatar3.png
 wwwroot\assets\img\avatar4.png
 wwwroot\assets\img\avatar5.png
 wwwroot\assets\img\bdlogo.png
+wwwroot\assets\img\bdlogo_semi_transparent.png
+wwwroot\assets\img\bdlogo_semi_transparent_2.png
 wwwroot\assets\img\boxed-bg.jpg
 wwwroot\assets\img\boxed-bg.png
 wwwroot\assets\img\bteblog.png

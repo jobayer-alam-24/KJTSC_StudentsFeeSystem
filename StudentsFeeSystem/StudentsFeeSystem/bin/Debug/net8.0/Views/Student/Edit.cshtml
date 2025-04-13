@@ -43,7 +43,20 @@
                             <input asp-for="Roll" class="form-control" placeholder="Enter student roll number" />
                             <span asp-validation-for="Roll" class="text-danger"></span>
                         </div>
-
+                        <div class="form-group mb-3">
+                            <label asp-for="Gender" class="form-label">Gender</label>
+                            <div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" asp-for="Gender" value="Male" id="genderMale" />
+                                    <label class="form-check-label" asp-for="Gender">Male</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" asp-for="Gender" value="Female" id="genderFemale" />
+                                    <label class="form-check-label" asp-for="Gender">Female</label>
+                                </div>
+                            </div>
+                            <span asp-validation-for="Gender" class="text-danger"></span>
+                        </div>
                         <div class="form-group mb-3">
                             <label asp-for="Class" class="form-label">Class</label>
                             <input asp-for="Class" class="form-control" placeholder="Enter student class" />

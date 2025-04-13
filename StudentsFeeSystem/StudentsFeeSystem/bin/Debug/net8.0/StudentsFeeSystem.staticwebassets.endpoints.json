@@ -1479,6 +1479,170 @@
       ]
     },
     {
+      "Route": "assets/img/bdlogo_semi_transparent.b6h0clsp83.png",
+      "AssetFile": "assets/img/bdlogo_semi_transparent.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "92631"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"81bROJlCBCMX2I8QyneJX9wKvOPiNqYyBEjterdbgKE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 13 Apr 2025 12:17:29 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "b6h0clsp83"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-81bROJlCBCMX2I8QyneJX9wKvOPiNqYyBEjterdbgKE="
+        },
+        {
+          "Name": "label",
+          "Value": "assets/img/bdlogo_semi_transparent.png"
+        }
+      ]
+    },
+    {
+      "Route": "assets/img/bdlogo_semi_transparent.png",
+      "AssetFile": "assets/img/bdlogo_semi_transparent.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "92631"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"81bROJlCBCMX2I8QyneJX9wKvOPiNqYyBEjterdbgKE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 13 Apr 2025 12:17:29 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-81bROJlCBCMX2I8QyneJX9wKvOPiNqYyBEjterdbgKE="
+        }
+      ]
+    },
+    {
+      "Route": "assets/img/bdlogo_semi_transparent_2.ib6io2sjac.png",
+      "AssetFile": "assets/img/bdlogo_semi_transparent_2.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "125488"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ftDnjvgBMq503StW92AH4Vp051xO/WKPKyzcTABJ7d4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 13 Apr 2025 12:19:33 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ib6io2sjac"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ftDnjvgBMq503StW92AH4Vp051xO/WKPKyzcTABJ7d4="
+        },
+        {
+          "Name": "label",
+          "Value": "assets/img/bdlogo_semi_transparent_2.png"
+        }
+      ]
+    },
+    {
+      "Route": "assets/img/bdlogo_semi_transparent_2.png",
+      "AssetFile": "assets/img/bdlogo_semi_transparent_2.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "125488"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ftDnjvgBMq503StW92AH4Vp051xO/WKPKyzcTABJ7d4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 13 Apr 2025 12:19:33 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ftDnjvgBMq503StW92AH4Vp051xO/WKPKyzcTABJ7d4="
+        }
+      ]
+    },
+    {
       "Route": "assets/img/boxed-bg.h242czgvr1.png",
       "AssetFile": "assets/img/boxed-bg.png",
       "Selectors": [],
