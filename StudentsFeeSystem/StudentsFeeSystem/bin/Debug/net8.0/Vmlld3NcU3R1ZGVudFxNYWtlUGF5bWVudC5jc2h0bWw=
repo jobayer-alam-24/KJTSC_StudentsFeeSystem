@@ -4,6 +4,7 @@
 @{
     ViewData["Title"] = "Select Payment Items";
 }
+
 <partial name="~/Views/Shared/Common/_TitleNavigationBarPartial.cshtml" model='("Select Payment Items", "/", "Home", "Select Payment Items")'></partial>
 
 @using (Html.BeginForm("MakePayment", "Student", FormMethod.Post, new { @class = "mt-4" }))
@@ -60,7 +61,7 @@
         function updateTotalAmount() {
             let totalAmount = 0;
 
-            // Iterate over all checkboxes
+            
             $('.form-check-input').each(function () {
                 if ($(this).is(':checked')) {
                     const value = parseFloat($(this).data('value')) || 0;
@@ -68,28 +69,28 @@
                 }
             });
 
-            // Update the total amount display
+            
             $('#totalAmount').text('Tk ' + totalAmount.toFixed(2));
         }
 
-        // Initialize the checkboxes and total amount when page loads
+      
         $('.form-check-input').change(function () {
             updateTotalAmount();
         });
 
-        // Select All Button
+        
         $('#selectAllBtn').click(function () {
             $('.form-check-input').prop('checked', true);
             updateTotalAmount();
         });
 
-        // Deselect All Button
+       
         $('#deselectAllBtn').click(function () {
             $('.form-check-input').prop('checked', false);
             updateTotalAmount();
         });
 
-        // Call updateTotalAmount once on page load to set initial total
+        
         updateTotalAmount();
     });
 </script>

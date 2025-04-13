@@ -30,7 +30,14 @@
                             @Html.DisplayFor(model => model.FathersName)
                         </div>
                     </div>
-
+                    <div class="row mb-3">
+                        <div class="col-sm-3">
+                            <strong>@Html.DisplayNameFor(model => model.Gender)</strong>
+                        </div>
+                        <div class="col-sm-9">
+                            @Html.DisplayFor(model => model.Gender)
+                        </div>
+                    </div>
                     <div class="row mb-3">
                         <div class="col-sm-3">
                             <strong>@Html.DisplayNameFor(model => model.Roll)</strong>
@@ -82,7 +89,7 @@
                 </div>
                 <div class="card-footer text-end">
                     <a class="btn btn-warning me-2" asp-action="Edit" asp-route-id="@Model?.Id">Edit</a>
-                    <a class="btn btn-primary" asp-action="Index">Back to List</a>
+                    <a class="btn btn-primary" asp-action="List">Back to List</a>
                 </div>
             </div>
         </div>

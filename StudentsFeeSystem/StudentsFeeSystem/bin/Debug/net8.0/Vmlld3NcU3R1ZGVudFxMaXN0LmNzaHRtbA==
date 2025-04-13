@@ -57,13 +57,18 @@
                 <option value="Paid">Paid</option>
                 <option value="NotPaid">Not Paid</option>
             </select>
+            <select id="genderFilter" name="genderFilter" class="form-control me-3" style="min-width: 150px;">
+                <option value="">Filter by Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
 
             <button type="submit" class="btn btn-primary ml-2">Search</button>
         </div>
     </form>
 
     <div class="table-responsive">
-        <table id="studentTable" class="table table-striped table-bordered table-hover" id="studentTable">
+        <table id="studentTable" class="table table-striped table-bordered table-hover">
             <thead class="thead-dark">
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.Name)</th>
@@ -123,7 +128,7 @@
                                 }
                                 else
                                 {
-                                    <a class="btn btn-sm btn-danger" asp-action="MakePayment" asp-route-id="@item.Id">Make Payment</a>
+                                    <a class="btn btn-sm btn-danger" asp-action="MakePayment" asp-route-id="@item.Id" >Make Payment</a>
                                 }
                                 <div class="d-inline-block">
                                     <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
@@ -137,7 +142,7 @@
                 else
                 {
                     <tr class="no-data">
-                        <td colspan="7" class="text-center text-danger">No students entered yet</td>
+                        <td colspan="8" class="text-center text-danger">No students entered yet</td>
                     </tr>
                 }
             </tbody>
@@ -167,24 +172,12 @@
         $('#studentCount').text(totalStudents);
 
             $('#studentCount').text(totalStudents);
-            var paidStudents = $('#studentTable tbody tr').filter(function() {
-                return $(this).find('td').eq(5).text().trim() === 'Paid';
-            }).length;
-            $('#paidCount').text(paidStudents);
+                var paidStudents = $('#studentTable tbody tr').filter(function() {
+            return $(this).find('td').eq(6).text().trim() === 'Paid';
+        }).length;
+        $('#paidCount').text(paidStudents);
         });
 
-        function confirmReset() {
-            let myPassword = "123";
-            const password = prompt('Enter admin password to reset fees:');
-            if (password === myPassword) {
-                return window.location.href = '@Url.Action("ResetFees")';
-            } else if (password === null) {
-                return false;
-            } else {
-                alert('Incorrect password!');
-                return false;
-            }
-        }
         function confirmReset() {
             let myPassword = "123";
             const password = prompt('Enter admin password to reset fees:');
