@@ -1,0 +1,97 @@
+﻿@model StudentsFeeSystem.Models.Student
+
+@{
+    ViewData["Title"] = "Student Information";
+}
+
+<partial name="~/Views/Shared/Common/_TitleNavigationBarPartial.cshtml" model='("Student Information", "/", "Home", "Student Information")'></partial>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card mt-4 shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Student Information</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-sm-3">
+                            <strong>@Html.DisplayNameFor(model => model.Name)</strong>
+                        </div>
+                        <div class="col-sm-9">
+                            @Html.DisplayFor(model => model.Name)
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-sm-3">
+                            <strong>@Html.DisplayNameFor(model => model.FathersName)</strong>
+                        </div>
+                        <div class="col-sm-9">
+                            @Html.DisplayFor(model => model.FathersName)
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-3">
+                            <strong>@Html.DisplayNameFor(model => model.Gender)</strong>
+                        </div>
+                        <div class="col-sm-9">
+                            @Html.DisplayFor(model => model.Gender)
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-3">
+                            <strong>@Html.DisplayNameFor(model => model.Roll)</strong>
+                        </div>
+                        <div class="col-sm-9">
+                            @Html.DisplayFor(model => model.Roll)
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-sm-3">
+                            <strong>@Html.DisplayNameFor(model => model.Class)</strong>
+                        </div>
+                        <div class="col-sm-9">
+                            @Html.DisplayFor(model => model.Class)
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-sm-3">
+                            <strong>Registered Date</strong>
+                        </div>
+                        <div class="col-sm-9">
+                            @Model.Date.ToString("MM/dd/yyyy")
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-sm-3">
+                            <strong>@Html.DisplayNameFor(model => model.Department)</strong>
+                        </div>
+                        <div class="col-sm-9">
+                            @{
+                                string displayDepartment = Model.Department.ToString() ?? "";
+                                if (displayDepartment == "ITSupport")
+                                {
+                                    displayDepartment = "IT Support & IOT Basic";
+                                }
+                                else if (displayDepartment == "Genereal_Electronics")
+                                {
+                                    displayDepartment = "General Electronics";
+                                }
+                            }
+                            <div class="p-2 bg-light border rounded">
+                                @displayDepartment
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-end">
+                    <a class="btn btn-warning me-2" asp-action="Edit" asp-route-id="@Model?.Id">Edit</a>
+                    <a class="btn btn-primary" asp-action="List">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

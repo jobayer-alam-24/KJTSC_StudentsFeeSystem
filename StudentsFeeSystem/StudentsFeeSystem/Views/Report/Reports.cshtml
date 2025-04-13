@@ -1,0 +1,143 @@
+﻿@using StudentsFeeSystem.ViewModel
+@model ReportViewModel
+@{
+    ViewData["Title"] = "Reports";
+}
+@section Styles
+{
+    <style>
+        .neumorphic {
+            background: #e0e5ec;
+            border-radius: 15px;
+            box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.1), -6px -6px 10px rgba(255, 255, 255, 0.7);
+        }
+
+        .neumorphic-header {
+            background: #ffffff;
+            border-radius: 15px 15px 0 0;
+            padding: 15px;
+        }
+
+        .neumorphic-body {
+            padding: 20px;
+            background: #f5f7fa;
+            border-radius: 0 0 15px 15px;
+        }
+
+        .neumorphic-list li {
+            padding: 10px 0;
+        }
+
+        .fs-5 {
+            font-size: 1.25rem;
+        }
+
+        .fw-bold {
+            font-weight: 700;
+        }
+    </style>
+}
+<partial name="~/Views/Shared/Common/_TitleNavigationBarPartial.cshtml" model='("Reports", "/", "Home", "Reports")'></partial>
+<div class="container py-5">
+    <div class="mb-4">
+        <div class="card shadow-lg rounded-3 neumorphic neumorphic-section">
+            <div class="card-header bg-primary text-white">
+                <h2 class="h4 mb-0 text-center">Graphical Representation</h2>
+            </div>
+            <div class="card-body neumorphic-body">
+                <canvas id="reportChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="card shadow-lg rounded-3 mb-4 neumorphic neumorphic-section">
+        <div class="card-header bg-primary text-white">
+            <h2 class="h4 mb-0">📊 Overall Report</h2>
+        </div>
+        <div class="card-body neumorphic-body">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Total Students:</strong> <span class="text-success fs-5 fw-bold">@Model.Overall.StudentCount</span></li>
+                <li class="list-group-item"><strong>Paid:</strong> <span class="text-success fs-5 fw-bold">@Model.Overall.PaidCount</span></li>
+                <li class="list-group-item"><strong>Not Paid:</strong> <span class="text-danger fs-5 fw-bold">@Model.Overall.NotPaidCount</span></li>
+                <li class="list-group-item"><strong>Total Collected:</strong> <span class="text-warning fs-5 fw-bold">৳@Model.Overall.TotalCollected</span></li>
+            </ul>
+        </div>
+    </div>
+
+    @foreach (var classReport in Model.ClassReports)
+    {
+        <div class="card shadow-lg rounded-3 mb-4 neumorphic neumorphic-section">
+            <div class="card-header bg-info text-white">
+                <h4 class="h5 mb-0">Class @classReport.Key</h4>
+            </div>
+            <div class="card-body neumorphic-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Total Students:</strong> @classReport.Value.Report.StudentCount</li>
+                    <li class="list-group-item"><strong>Paid:</strong> @classReport.Value.Report.PaidCount</li>
+                    <li class="list-group-item"><strong>Not Paid:</strong> @classReport.Value.Report.NotPaidCount</li>
+                    <li class="list-group-item"><strong>Total Collected:</strong> ৳@classReport.Value.Report.TotalCollected</li>
+                </ul>
+
+                @if (classReport.Key >= 9 && classReport.Key <= 12)
+                {
+                    <div class="mt-4">
+                        @foreach (var deptReport in classReport.Value.DepartmentReports)
+                        {
+                            @if (deptReport.Key != Department.NONE)
+                            {
+                                <div class="card shadow-lg rounded-3 mb-4 neumorphic neumorphic-section">
+                                    <div class="card-header bg-warning text-white">
+                                        <h5 class="h6 mb-0">@deptReport.Key</h5>
+                                    </div>
+                                    <div class="card-body neumorphic-body">
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item"><strong>Total Students:</strong> @deptReport.Value.StudentCount</li>
+                                            <li class="list-group-item"><strong>Paid:</strong> @deptReport.Value.PaidCount</li>
+                                            <li class="list-group-item"><strong>Not Paid:</strong> @deptReport.Value.NotPaidCount</li>
+                                            <li class="list-group-item"><strong>Total Collected:</strong> ৳@deptReport.Value.TotalCollected</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>
+
+
+@section Scripts
+{
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        var ctx = document.getElementById('reportChart').getContext('2d');
+        var reportChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Total Students', 'Paid', 'Not Paid', 'Total Collected'],
+                datasets: [{
+                    label: 'Student Fee Report',
+                    data: [
+        @Model.Overall.StudentCount,
+        @Model.Overall.PaidCount,
+        @Model.Overall.NotPaidCount,
+        @Model.Overall.TotalCollected
+                    ],
+                    backgroundColor: ['#4CAF50', '#FF9800', '#F44336', '#2196F3'],
+                    borderColor: ['#388E3C', '#F57C00', '#D32F2F', '#1976D2'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+}
