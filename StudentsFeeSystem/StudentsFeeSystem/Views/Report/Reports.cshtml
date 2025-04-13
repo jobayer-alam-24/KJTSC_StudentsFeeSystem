@@ -114,30 +114,58 @@
 
     <script>
         var ctx = document.getElementById('reportChart').getContext('2d');
+        var studentCount = @Model.Overall.StudentCount;
+        var paid = @Model.Overall.PaidCount;
+        var notPaid = @Model.Overall.NotPaidCount;
+        var collected = @Model.Overall.TotalCollected;
+
         var reportChart = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: ['Total Students', 'Paid', 'Not Paid', 'Total Collected'],
                 datasets: [{
                     label: 'Student Fee Report',
-                    data: [
-        @Model.Overall.StudentCount,
-        @Model.Overall.PaidCount,
-        @Model.Overall.NotPaidCount,
-        @Model.Overall.TotalCollected
-                    ],
+                    data: [studentCount, paid, notPaid, collected],
                     backgroundColor: ['#4CAF50', '#FF9800', '#F44336', '#2196F3'],
                     borderColor: ['#388E3C', '#F57C00', '#D32F2F', '#1976D2'],
                     borderWidth: 1
                 }]
             },
             options: {
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let value = context.parsed.y;
+                                let label = context.label;
+                                let total = (label === 'Total Collected') ? collected : studentCount;
+                                let percentage = total > 0 ? ((value / total) * 100).toFixed(2) + '%' : 'N/A';
+                                return `${value} (${percentage})`;
+                            }
+                        }
+                    }
+                },
                 scales: {
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    },
                     y: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            display: false
+                        },
                         beginAtZero: true
                     }
                 }
             }
         });
     </script>
+
 }
