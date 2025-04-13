@@ -26,3 +26,4 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=List}/{id?}");
 
 app.Run();
+//dotnet publish -c Release -r win-x64 --self-contained true /p:PublishSingleFile=true

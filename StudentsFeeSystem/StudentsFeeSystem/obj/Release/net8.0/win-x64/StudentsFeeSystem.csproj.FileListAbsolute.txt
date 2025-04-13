@@ -573,7 +573,6 @@ D:\KJTSC_StudentsFeeSystem\StudentsFeeSystem\StudentsFeeSystem\bin\Release\net8.
 D:\KJTSC_StudentsFeeSystem\StudentsFeeSystem\StudentsFeeSystem\bin\Release\net8.0\win-x64\hostfxr.dll
 D:\KJTSC_StudentsFeeSystem\StudentsFeeSystem\StudentsFeeSystem\bin\Release\net8.0\win-x64\hostpolicy.dll
 D:\KJTSC_StudentsFeeSystem\StudentsFeeSystem\StudentsFeeSystem\bin\Release\net8.0\win-x64\mscordaccore.dll
-D:\KJTSC_StudentsFeeSystem\StudentsFeeSystem\StudentsFeeSystem\bin\Release\net8.0\win-x64\mscordaccore_amd64_amd64_8.0.1425.11118.dll
 D:\KJTSC_StudentsFeeSystem\StudentsFeeSystem\StudentsFeeSystem\bin\Release\net8.0\win-x64\mscordbi.dll
 D:\KJTSC_StudentsFeeSystem\StudentsFeeSystem\StudentsFeeSystem\bin\Release\net8.0\win-x64\mscorrc.dll
 D:\KJTSC_StudentsFeeSystem\StudentsFeeSystem\StudentsFeeSystem\bin\Release\net8.0\win-x64\msquic.dll
@@ -907,3 +906,4 @@ D:\KJTSC_StudentsFeeSystem\StudentsFeeSystem\StudentsFeeSystem\bin\Release\net8.
 D:\KJTSC_StudentsFeeSystem\StudentsFeeSystem\StudentsFeeSystem\bin\Release\net8.0\win-x64\refs\WindowsBase.dll
 D:\KJTSC_StudentsFeeSystem\StudentsFeeSystem\StudentsFeeSystem\bin\Release\net8.0\win-x64\Views\Home\List.cshtml
 D:\KJTSC_StudentsFeeSystem\StudentsFeeSystem\StudentsFeeSystem\bin\Release\net8.0\win-x64\Views\Student\List.cshtml
+D:\KJTSC_StudentsFeeSystem\StudentsFeeSystem\StudentsFeeSystem\bin\Release\net8.0\win-x64\mscordaccore_amd64_amd64_8.0.1525.16413.dll

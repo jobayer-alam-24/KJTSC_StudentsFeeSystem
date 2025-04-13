@@ -2,7 +2,7 @@
   "Files": [
     {
       "Id": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\obj\\Release\\net8.0\\win-x64\\scopedcss\\projectbundle\\StudentsFeeSystem.bundle.scp.css",
-      "PackagePath": "staticwebassets\\StudentsFeeSystem.hllongqp23.bundle.scp.css"
+      "PackagePath": "staticwebassets\\StudentsFeeSystem.wnf6zpnz48.bundle.scp.css"
     },
     {
       "Id": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\wwwroot\\assets\\css\\adminlte.css",
@@ -67,6 +67,18 @@
     {
       "Id": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\wwwroot\\assets\\img\\avatar5.png",
       "PackagePath": "staticwebassets\\assets\\img\\avatar5.png"
+    },
+    {
+      "Id": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\wwwroot\\assets\\img\\bdlogo.png",
+      "PackagePath": "staticwebassets\\assets\\img\\bdlogo.png"
+    },
+    {
+      "Id": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\wwwroot\\assets\\img\\bdlogo_semi_transparent.png",
+      "PackagePath": "staticwebassets\\assets\\img\\bdlogo_semi_transparent.png"
+    },
+    {
+      "Id": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\wwwroot\\assets\\img\\bdlogo_semi_transparent_2.png",
+      "PackagePath": "staticwebassets\\assets\\img\\bdlogo_semi_transparent_2.png"
     },
     {
       "Id": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\wwwroot\\assets\\img\\boxed-bg.jpg",

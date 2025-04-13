@@ -41,7 +41,7 @@ namespace StudentsFeeSystem.Models
         [Required(ErrorMessage = "Gender is required.")]
         [Display(Name = "Gender")]
         public Gender Gender { get; set; }
-
+        [Required(ErrorMessage = "Please, Select a Deparment or NONE.")]
         public Department Department { get; set; }
     }
     public enum Department
