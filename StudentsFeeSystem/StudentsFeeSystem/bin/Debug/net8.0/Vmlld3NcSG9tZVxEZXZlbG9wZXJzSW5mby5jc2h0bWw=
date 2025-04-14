@@ -1,0 +1,106 @@
+﻿@{
+    ViewData["Title"] = "Developers Information";
+}
+@section Styles
+{
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fa;
+        }
+
+        .profile-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-left: 5px solid #007bff;
+        }
+
+            .profile-card img {
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                object-fit: cover;
+                border: 3px solid #007bff;
+            }
+
+        .social-icons a {
+            margin-right: 15px;
+            font-size: 18px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #343a40;
+            margin-top: 20px;
+        }
+
+        .contact-info p {
+            font-size: 16px;
+            color: #6c757d;
+        }
+
+        .btn-custom {
+            font-size: 14px;
+            padding: 8px 15px;
+        }
+
+            .btn-custom:hover {
+                opacity: 0.8;
+            }
+
+        .btn-github {
+            background-color: #333;
+            color: white;
+        }
+
+        .btn-facebook {
+            background-color: #1877f2;
+            color: white;
+        }
+    </style>
+}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="profile-card text-center">
+                <h3 class="text-primary">Sheikh Jobayer Alam</h3>
+                <p class="text-muted">Developer (.NET) | Client Side + Server Side</p>
+
+                <div class="mt-4">
+                    <h5 class="section-title text-primary">About Me</h5>
+                    <p class="text-muted">I am a passionate developer specializing in both client-side and server-side technologies. I am well-versed in .NET frameworks, web technologies like HTML, CSS, Bootstrap, JavaScript, JQuery, and C#.</p>
+
+                    <h5 class="section-title text-primary">Skills</h5>
+                    <ul class="list-unstyled">
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>Bootstrap</li>
+                        <li>JavaScript</li>
+                        <li>JQuery</li>
+                        <li>C#</li>
+                        <li>C</li>
+                        <li>ASP.NET Framework</li>
+                    </ul>
+
+                    <h5 class="section-title text-primary">Education</h5>
+                    <p class="text-muted">Currently studying in Class 10 at Kaligonj Govt. Technical School & College (KJTSC). Department: IT Support & IOT Basics.</p>
+
+                    <h5 class="section-title text-primary">Contact Information</h5>
+                    <div class="contact-info">
+                        <p><strong>Email:</strong> sheikhjobayeralam2000@gmail.com</p>
+                        <p><strong>Phone:</strong> 01903081186</p>
+                    </div>
+
+                    <h5 class="section-title text-primary">Social Links</h5>
+                    <div class="social-icons">
+                        <a href="https://github.com/jobayer-alam-24" target="_blank" class="btn btn-custom btn-github">GitHub</a>
+                        <a href="https://www.facebook.com/profile.php?id=100080570213923" target="_blank" class="btn btn-custom btn-facebook">Facebook</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

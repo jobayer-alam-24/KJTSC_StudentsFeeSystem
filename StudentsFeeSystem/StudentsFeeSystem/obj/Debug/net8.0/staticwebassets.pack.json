@@ -161,6 +161,14 @@
       "PackagePath": "staticwebassets\\assets\\img\\prod-5.jpg"
     },
     {
+      "Id": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\wwwroot\\assets\\img\\tsckaligonjLogo.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\tsckaligonjLogo.jpg"
+    },
+    {
+      "Id": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\wwwroot\\assets\\img\\tsckaligonjLogo_semi_transparent.png",
+      "PackagePath": "staticwebassets\\assets\\img\\tsckaligonjLogo_semi_transparent.png"
+    },
+    {
       "Id": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\wwwroot\\assets\\img\\user1-128x128.jpg",
       "PackagePath": "staticwebassets\\assets\\img\\user1-128x128.jpg"
     },

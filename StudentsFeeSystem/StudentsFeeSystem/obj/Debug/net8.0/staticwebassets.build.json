@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "tkQ0wGEUPqmiRQhqeKrhYynlDUWdxOs9TJ2tI8wKBOU=",
+  "Hash": "TufzV02Njkub29rARziZR5CiH8Mb4hQ2YqODrhqTSH0=",
   "Source": "StudentsFeeSystem",
   "BasePath": "_content/StudentsFeeSystem",
   "Mode": "Default",
@@ -876,6 +876,48 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\img\\prod-5.jpg"
+    },
+    {
+      "Identity": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\wwwroot\\assets\\img\\tsckaligonjLogo.jpg",
+      "SourceId": "StudentsFeeSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\wwwroot\\",
+      "BasePath": "_content/StudentsFeeSystem",
+      "RelativePath": "assets/img/tsckaligonjLogo#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "84m0l95ntp",
+      "Integrity": "+Hg+bcjpLZ1AomvOHoPoQr6Z99XQ1wbo9RPi5DrKw7E=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\tsckaligonjLogo.jpg"
+    },
+    {
+      "Identity": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\wwwroot\\assets\\img\\tsckaligonjLogo_semi_transparent.png",
+      "SourceId": "StudentsFeeSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\wwwroot\\",
+      "BasePath": "_content/StudentsFeeSystem",
+      "RelativePath": "assets/img/tsckaligonjLogo_semi_transparent#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "g6b99xusww",
+      "Integrity": "KLKQ+XdaJhO/0kAfO00g6pgFcMKLTKQhbJm6RYzO5o0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\tsckaligonjLogo_semi_transparent.png"
     },
     {
       "Identity": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\wwwroot\\assets\\img\\user1-128x128.jpg",
@@ -5586,6 +5628,170 @@
         {
           "Name": "integrity",
           "Value": "sha256-5aB2LMc0Lg3qx+u4/ZSYuLwovbE2/qdkT0yf78+Yvh8="
+        }
+      ]
+    },
+    {
+      "Route": "assets/img/tsckaligonjLogo.84m0l95ntp.jpg",
+      "AssetFile": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\wwwroot\\assets\\img\\tsckaligonjLogo.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "328289"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+Hg+bcjpLZ1AomvOHoPoQr6Z99XQ1wbo9RPi5DrKw7E=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 14 Apr 2025 06:17:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "84m0l95ntp"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/img/tsckaligonjLogo.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-+Hg+bcjpLZ1AomvOHoPoQr6Z99XQ1wbo9RPi5DrKw7E="
+        }
+      ]
+    },
+    {
+      "Route": "assets/img/tsckaligonjLogo.jpg",
+      "AssetFile": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\wwwroot\\assets\\img\\tsckaligonjLogo.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "328289"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+Hg+bcjpLZ1AomvOHoPoQr6Z99XQ1wbo9RPi5DrKw7E=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 14 Apr 2025 06:17:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-+Hg+bcjpLZ1AomvOHoPoQr6Z99XQ1wbo9RPi5DrKw7E="
+        }
+      ]
+    },
+    {
+      "Route": "assets/img/tsckaligonjLogo_semi_transparent.g6b99xusww.png",
+      "AssetFile": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\wwwroot\\assets\\img\\tsckaligonjLogo_semi_transparent.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "235313"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"KLKQ+XdaJhO/0kAfO00g6pgFcMKLTKQhbJm6RYzO5o0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 14 Apr 2025 06:50:56 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "g6b99xusww"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/img/tsckaligonjLogo_semi_transparent.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-KLKQ+XdaJhO/0kAfO00g6pgFcMKLTKQhbJm6RYzO5o0="
+        }
+      ]
+    },
+    {
+      "Route": "assets/img/tsckaligonjLogo_semi_transparent.png",
+      "AssetFile": "D:\\KJTSC_StudentsFeeSystem\\StudentsFeeSystem\\StudentsFeeSystem\\wwwroot\\assets\\img\\tsckaligonjLogo_semi_transparent.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "235313"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"KLKQ+XdaJhO/0kAfO00g6pgFcMKLTKQhbJm6RYzO5o0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 14 Apr 2025 06:50:56 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-KLKQ+XdaJhO/0kAfO00g6pgFcMKLTKQhbJm6RYzO5o0="
         }
       ]
     },

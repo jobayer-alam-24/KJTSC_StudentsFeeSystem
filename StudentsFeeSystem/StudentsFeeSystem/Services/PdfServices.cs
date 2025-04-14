@@ -34,46 +34,40 @@ namespace StudentsFeeSystem.Services
                     page.Margin(1.5f, Unit.Centimetre);
                     page.DefaultTextStyle(x => x.FontSize(10));
 
-                    var watermarkPath = "wwwroot/assets/img/bdlogo.png";
-                    var modifiedWatermarkPath = "wwwroot/assets/img/bdlogo_semi_transparent.png";
-                    var modifiedWatermarkPath2 = "wwwroot/assets/img/bdlogo_semi_transparent_2.png";
+                    var originalLogoPath = "wwwroot/assets/img/tsckaligonjLogo.jpg";
+                    var semiTransparentLogoPath = "wwwroot/assets/img/tsckaligonjLogo_semi_transparent.png";
 
-                   
-                    if (!File.Exists(modifiedWatermarkPath))
+               
+                    if (!File.Exists(semiTransparentLogoPath))
                     {
-                        ImageHelper.CreateSemiTransparentImage(watermarkPath, modifiedWatermarkPath, 0.01f);
+                        ImageHelper.CreateSemiTransparentImage(originalLogoPath, semiTransparentLogoPath, 0.05f); 
                     }
 
-                    
-                    if (!File.Exists(modifiedWatermarkPath2))
-                    {
-                        ImageHelper.CreateSemiTransparentImage(watermarkPath, modifiedWatermarkPath2, 0.2f);
-                    }
+                    byte[] watermarkBytes = File.Exists(semiTransparentLogoPath) ? File.ReadAllBytes(semiTransparentLogoPath) : null;
 
-                    byte[] imageBytes = File.Exists(modifiedWatermarkPath) ? File.ReadAllBytes(modifiedWatermarkPath) : null;
-                    byte[] imageBytes2 = File.Exists(modifiedWatermarkPath2) ? File.ReadAllBytes(modifiedWatermarkPath2) : null;
 
                     page.Content().Layers(layers =>
                     {
-                        
-                        if (imageBytes != null)
+                        if (watermarkBytes != null)
                         {
                             layers.Layer()
                                 .AlignCenter()
                                 .AlignMiddle()
-                                .Image(imageBytes, ImageScaling.FitArea);
+                                .Image(watermarkBytes, ImageScaling.FitArea);
                         }
+
 
                         // Main content layer
                         layers.PrimaryLayer().Column(col =>
                         {
+                            // First receipt
                             col.Item().Element(header =>
                             {
                                 header.Row(row =>
                                 {
                                     row.ConstantColumn(50).Element(logo =>
                                     {
-                                        var logoPath = "wwwroot/assets/img/bteblog.png";
+                                        var logoPath = "wwwroot/assets/img/tsckaligonjLogo.jpg";
                                         if (File.Exists(logoPath))
                                         {
                                             var logoBytes = File.ReadAllBytes(logoPath);
@@ -121,7 +115,7 @@ namespace StudentsFeeSystem.Services
                             col.Item().Text($"রোল নম্বর: {ConvertToBengaliNumber(student.Roll.ToString())}");
                             col.Item().Text($"শ্রেণী: {ConvertToBengaliNumber(student.Class.ToString())}");
                             if (student.Department != Department.NONE)
-                            col.Item().Text($"ফি পরিশোধ: {(student.HasPaid ? "হ্যাঁ" : "না")}").Bold();
+                                col.Item().Text($"ফি পরিশোধ: {(student.HasPaid ? "হ্যাঁ" : "না")}").Bold();
                             col.Item().Text($"পরিশোধিত: {ConvertToBengaliNumber(student.Fee.ToString())} টাকা").Bold();
                             col.Item().Text($"তারিখ: {ConvertToBengaliNumber(student.Date.ToString("dd-MM-yyyy"))}");
                             col.Item().LineHorizontal(1);
@@ -132,22 +126,14 @@ namespace StudentsFeeSystem.Services
                             col.Item().Text("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -").AlignCenter().FontSize(10);
                             col.Item().PaddingVertical(2);
 
-                            // Add second watermark in the background layer for the second receipt
-                            if (imageBytes2 != null)
-                            {
-                                layers.Layer()
-                                    .AlignCenter()
-                                    .AlignMiddle()
-                                    .Image(imageBytes2, ImageScaling.FitArea);
-                            }
-
+                            // Second receipt
                             col.Item().Element(header =>
                             {
                                 header.Row(row =>
                                 {
                                     row.ConstantColumn(50).Element(logo =>
                                     {
-                                        var logoPath = "wwwroot/assets/img/bteblog.png";
+                                        var logoPath = "wwwroot/assets/img/tsckaligonjLogo.jpg";
                                         if (File.Exists(logoPath))
                                         {
                                             var logoBytes = File.ReadAllBytes(logoPath);
@@ -195,7 +181,7 @@ namespace StudentsFeeSystem.Services
                             col.Item().Text($"রোল নম্বর: {ConvertToBengaliNumber(student.Roll.ToString())}");
                             col.Item().Text($"শ্রেণী: {ConvertToBengaliNumber(student.Class.ToString())}");
                             if (student.Department != Department.NONE)
-                            col.Item().Text($"ফি পরিশোধ: {(student.HasPaid ? "হ্যাঁ" : "না")}").Bold();
+                                col.Item().Text($"ফি পরিশোধ: {(student.HasPaid ? "হ্যাঁ" : "না")}").Bold();
                             col.Item().Text($"পরিশোধিত: {ConvertToBengaliNumber(student.Fee.ToString())} টাকা").Bold();
                             col.Item().Text($"তারিখ: {ConvertToBengaliNumber(student.Date.ToString("dd-MM-yyyy"))}");
                             col.Item().LineHorizontal(1);
@@ -209,6 +195,7 @@ namespace StudentsFeeSystem.Services
 
             return document.GeneratePdf();
         }
+
 
         private static string GetDepartmentName(Department department)
         {
