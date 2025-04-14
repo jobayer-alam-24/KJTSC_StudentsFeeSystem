@@ -37,7 +37,7 @@ wwwroot\assets\img\prod-2.jpg
 wwwroot\assets\img\prod-3.jpg
 wwwroot\assets\img\prod-4.jpg
 wwwroot\assets\img\prod-5.jpg
-wwwroot\assets\img\tsckaligonjLogo.jpg
+wwwroot\assets\img\tsckaligonjLogo.png
 wwwroot\assets\img\tsckaligonjLogo_semi_transparent.png
 wwwroot\assets\img\user1-128x128.jpg
 wwwroot\assets\img\user2-160x160.jpg

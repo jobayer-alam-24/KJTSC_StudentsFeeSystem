@@ -34,7 +34,7 @@ namespace StudentsFeeSystem.Services
                     page.Margin(1.5f, Unit.Centimetre);
                     page.DefaultTextStyle(x => x.FontSize(10));
 
-                    var originalLogoPath = "wwwroot/assets/img/tsckaligonjLogo.jpg";
+                    var originalLogoPath = "wwwroot/assets/img/tsckaligonjLogo.png";
                     var semiTransparentLogoPath = "wwwroot/assets/img/tsckaligonjLogo_semi_transparent.png";
 
                
@@ -67,7 +67,7 @@ namespace StudentsFeeSystem.Services
                                 {
                                     row.ConstantColumn(50).Element(logo =>
                                     {
-                                        var logoPath = "wwwroot/assets/img/tsckaligonjLogo.jpg";
+                                        var logoPath = "wwwroot/assets/img/tsckaligonjLogo.png";
                                         if (File.Exists(logoPath))
                                         {
                                             var logoBytes = File.ReadAllBytes(logoPath);
@@ -133,7 +133,7 @@ namespace StudentsFeeSystem.Services
                                 {
                                     row.ConstantColumn(50).Element(logo =>
                                     {
-                                        var logoPath = "wwwroot/assets/img/tsckaligonjLogo.jpg";
+                                        var logoPath = "wwwroot/assets/img/tsckaligonjLogo.png";
                                         if (File.Exists(logoPath))
                                         {
                                             var logoBytes = File.ReadAllBytes(logoPath);
