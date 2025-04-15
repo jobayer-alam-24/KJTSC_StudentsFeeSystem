@@ -1,0 +1,36 @@
+﻿@model StudentsFeeSystem.Models.FeeItem
+
+@{
+    ViewData["Title"] = "Fee Item Details";
+}
+
+<partial name="~/Views/Shared/Common/_TitleNavigationBarPartial.cshtml" model='("Fee Item Details", "/", "Home", "Details")'></partial>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">Fee Item Details</h5>
+                </div>
+                <div class="card-body">
+                    <dl class="row mb-0">
+                        <dt class="col-sm-4 fw-semibold">Name</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.Name)</dd>
+
+                        <dt class="col-sm-4 fw-semibold">Value</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.Value)</dd>
+                    </dl>
+                </div>
+                <div class="card-footer bg-light text-center">
+                    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-outline-primary me-2">
+                        <i class="bi bi-pencil-square"></i> Edit
+                    </a>
+                    <a asp-action="Index" class="btn btn-outline-secondary">
+                        <i class="bi bi-arrow-left"></i> Back to List
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

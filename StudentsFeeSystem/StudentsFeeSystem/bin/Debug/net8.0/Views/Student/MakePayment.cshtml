@@ -11,7 +11,7 @@
 {
     @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
 
-    <input type="hidden" name="StudentId" value="@ViewBag.StudentId" />
+    @Html.HiddenFor(m => m.Id)
 
     <div class="card shadow-sm mb-4 p-4">
         <h4 class="text-primary d-flex justify-content-between align-items-center">
@@ -23,35 +23,44 @@
     <div class="card shadow-sm p-4">
         <h4 class="mb-4 text-primary">Select Payment Items</h4>
 
-        <div class="mb-3">
-            <button type="button" class="btn btn-info me-2" id="selectAllBtn" style="padding: 5px 10px;">Select All</button>
-            <button type="button" class="btn btn-warning" id="deselectAllBtn" style="padding: 5px 10px;">Deselect All</button>
-        </div>
+        @if (Model.Items.Count == 0)
+        {
+            <div class="alert alert-info">
+                No fee items found for this class and gender. Please create fee items to proceed.
+            </div>
+        }
+        else
+        {
+            <div class="mb-3">
+                <button type="button" class="btn btn-info me-2" id="selectAllBtn" style="padding: 5px 10px;">Select All</button>
+                <button type="button" class="btn btn-warning" id="deselectAllBtn" style="padding: 5px 10px;">Deselect All</button>
+            </div>
 
-        <div class="list-group mb-3">
-            @for (int i = 0; i < Model.Items.Count; i++)
-            {
-                <div class="list-group-item d-flex align-items-center justify-content-between">
-                    <div class="form-check">
-                        @Html.CheckBoxFor(m => m.Items[i].IsSelected, new
-                            {
-                                @class = "form-check-input item-checkbox",
-                                id = $"item_{i}",
-                                data_value = Model.Items[i].Value
-                            })
-                        <label class="form-check-label" for="item_@i">
-                            @Model.Items[i].Name - <strong>@Model.Items[i].Value</strong> Tk
-                        </label>
+            <div class="list-group mb-3">
+                @for (int i = 0; i < Model.Items.Count; i++)
+                {
+                    <div class="list-group-item d-flex align-items-center justify-content-between">
+                        <div class="form-check">
+                            @Html.CheckBoxFor(m => m.Items[i].IsSelected, new
+                                {
+                                    @class = "form-check-input item-checkbox",
+                                    id = $"item_{i}",
+                                    data_value = Model.Items[i].Value
+                                })
+                            <label class="form-check-label" for="item_@i">
+                                @Model.Items[i].Name - <strong>@Model.Items[i].Value</strong> Tk
+                            </label>
+                        </div>
+
+                        @Html.HiddenFor(m => m.Items[i].Id)
+                        @Html.HiddenFor(m => m.Items[i].Name)
+                        @Html.HiddenFor(m => m.Items[i].Value)
                     </div>
+                }
+            </div>
 
-                    @Html.HiddenFor(m => m.Items[i].Id)
-                    @Html.HiddenFor(m => m.Items[i].Name)
-                    @Html.HiddenFor(m => m.Items[i].Value)
-                </div>
-            }
-        </div>
-
-        <button type="submit" class="btn btn-success w-100">Submit</button>
+            <button type="submit" class="btn btn-success w-100">Submit</button>
+        }
     </div>
 }
 
@@ -60,37 +69,25 @@
     $(document).ready(function () {
         function updateTotalAmount() {
             let totalAmount = 0;
-
-            
             $('.form-check-input').each(function () {
                 if ($(this).is(':checked')) {
                     const value = parseFloat($(this).data('value')) || 0;
                     totalAmount += value;
                 }
             });
-
-            
             $('#totalAmount').text('Tk ' + totalAmount.toFixed(2));
         }
-
-      
         $('.form-check-input').change(function () {
             updateTotalAmount();
         });
-
-        
         $('#selectAllBtn').click(function () {
             $('.form-check-input').prop('checked', true);
             updateTotalAmount();
         });
-
-       
         $('#deselectAllBtn').click(function () {
             $('.form-check-input').prop('checked', false);
             updateTotalAmount();
         });
-
-        
         updateTotalAmount();
     });
 </script>

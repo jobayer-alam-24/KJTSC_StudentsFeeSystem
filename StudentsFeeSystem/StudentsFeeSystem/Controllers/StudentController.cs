@@ -182,110 +182,113 @@ namespace StudentsFeeSystem.Controllers
 
 
         // GET: MakePayment
-        public async Task<ActionResult> MakePayment(int id)
+        [Route("Student/MakePayment/{id}")]
+        [HttpGet]
+        public async Task<IActionResult> MakePayment(int id)
         {
             var student = await _context.Students.FindAsync(id);
-
             if (student == null)
             {
                 return NotFound();
             }
 
-            var maleItems = new List<Item>
-    {
-        new Item { Id = 1, Name = "Admission Fee", Value = 1000 },
-        new Item { Id = 2, Name = "Yearly Admission Fee", Value = 200 },
-        new Item { Id = 3, Name = "Collateral Fee", Value = 50 },
-        new Item { Id = 4, Name = "Internal Exam Fee", Value = 30 },
-        new Item { Id = 5, Name = "Magazine Fee (Yearly)", Value = 25 },
-        new Item { Id = 6, Name = "Religious Fund", Value = 10 },
-        new Item { Id = 7, Name = "Rover Scout / Girl Guide Fees", Value = 15 },
-        new Item { Id = 8, Name = "Registration Fees", Value = 20 },
-        new Item { Id = 9, Name = "Students Medical Test Fees", Value = 40 },
-        new Item { Id = 10, Name = "Identity Fees", Value = 5 },
-        new Item { Id = 11, Name = "Red Crescent Fees", Value = 8 },
-        new Item { Id = 12, Name = "Mosque Development Fees", Value = 12 },
-        new Item { Id = 13, Name = "Games and Cultural Fees", Value = 18 },
-        new Item { Id = 14, Name = "Credential Fees", Value = 10 },
-        new Item { Id = 15, Name = "Enrolled Student Certificate Fees", Value = 6 },
-        new Item { Id = 16, Name = "Poor Fund Fees", Value = 5 },
-        new Item { Id = 17, Name = "Night Guard Fees", Value = 3 },
-        new Item { Id = 18, Name = "ICT Fees", Value = 20 },
-        new Item { Id = 19, Name = "Cycle Garage Fees", Value = 7 },
-        new Item { Id = 20, Name = "Parents Day Fees", Value = 15 },
-        new Item { Id = 21, Name = "Science & Technology Fees", Value = 10 },
-        new Item { Id = 22, Name = "Education Week Fees", Value = 8 },
-        new Item { Id = 23, Name = "Literature & Culture Fees", Value = 12 },
-        new Item { Id = 24, Name = "Others", Value = 5 }
-    };
+            List<FeeItem> feeItems = await _context.FeeItems.ToListAsync();
 
-            var femaleItems = new List<Item>
-    {
-        new Item { Id = 1, Name = "Admission Fee", Value = 100 },
-        new Item { Id = 2, Name = "Yearly Admission Fee", Value = 200 },
-        new Item { Id = 3, Name = "Collateral Fee", Value = 50 },
-        new Item { Id = 4, Name = "Internal Exam Fee", Value = 30 },
-        new Item { Id = 5, Name = "Magazine Fee (Yearly)", Value = 25 },
-        new Item { Id = 6, Name = "Religious Fund", Value = 10 },
-        new Item { Id = 7, Name = "Rover Scout / Girl Guide Fees", Value = 15 },
-        new Item { Id = 8, Name = "Registration Fees", Value = 20 },
-        new Item { Id = 9, Name = "Students Medical Test Fees", Value = 40 },
-        new Item { Id = 10, Name = "Identity Fees", Value = 5 },
-        new Item { Id = 11, Name = "Red Crescent Fees", Value = 8 },
-        new Item { Id = 12, Name = "Mosque Development Fees", Value = 12 },
-        new Item { Id = 13, Name = "Games and Cultural Fees", Value = 18 },
-        new Item { Id = 14, Name = "Credential Fees", Value = 10 },
-        new Item { Id = 15, Name = "Enrolled Student Certificate Fees", Value = 6 },
-        new Item { Id = 16, Name = "Poor Fund Fees", Value = 5 },
-        new Item { Id = 17, Name = "Night Guard Fees", Value = 3 },
-        new Item { Id = 18, Name = "ICT Fees", Value = 20 },
-        new Item { Id = 19, Name = "Cycle Garage Fees", Value = 7 },
-        new Item { Id = 20, Name = "Parents Day Fees", Value = 15 },
-        new Item { Id = 21, Name = "Science & Technology Fees", Value = 10 },
-        new Item { Id = 22, Name = "Education Week Fees", Value = 8 },
-        new Item { Id = 23, Name = "Literature & Culture Fees", Value = 12 },
-        new Item { Id = 24, Name = "Others", Value = 5 }
-    };
-
-            List<Item> selectedItems = (student.Gender.ToString() == "Male") ? maleItems : femaleItems;
-
-            var model = new ItemListViewModel
+            if (student.Gender.ToString() == "Male")
             {
-                Items = selectedItems
+                feeItems = feeItems
+                    .Where(f => f.AssignedToMale)
+                    .Where(f => IsFeeItemAssignedToClass(f, student.Class))
+                    .ToList();
+            }
+            else if (student.Gender.ToString() == "Female")
+            {
+                feeItems = feeItems
+                    .Where(f => f.AssignedToFemale)
+                    .Where(f => IsFeeItemAssignedToClass(f, student.Class))
+                    .ToList();
+            }
+            else
+            {
+                feeItems = feeItems
+                    .Where(f => IsFeeItemAssignedToClass(f, student.Class))
+                    .ToList();
+            }
+
+            var viewModel = new ItemListViewModel
+            {
+                Id = student.Id,
+                Items = feeItems.Select(f => new FeeItemViewModel
+                {
+                    Id = f.Id,
+                    Name = f.Name,
+                    Value = f.Value,
+                    IsSelected = false
+                }).ToList()
             };
 
-            return View(model);
+            return View(viewModel);
+        }
+        private bool IsFeeItemAssignedToClass(FeeItem feeItem, int studentClass)
+        {
+            // Dynamically generate the property name based on the student's class
+            var propertyName = $"AssignedToClass{studentClass}";
+
+            // Get the property using reflection
+            var property = feeItem.GetType().GetProperty(propertyName);
+
+            if (property != null)
+            {
+                // Return the value of the property (true or false) for the given class
+                return (bool)property.GetValue(feeItem);
+            }
+
+            // If the property does not exist, return false
+            return false;
         }
 
-
-
         // POST: MakePayment
+        [Route("Student/MakePayment/{id}")]
         [HttpPost]
-        public async Task<IActionResult> MakePayment(int id, ItemListViewModel model)
+        public async Task<IActionResult> MakePayment(ItemListViewModel model)
         {
-            if (model.Items == null || !model.Items.Any(x => x.IsSelected))
+            var student = await _context.Students.FindAsync(model.Id);
+            if (student == null)
             {
-                ModelState.AddModelError("", "Please select at least one fee item.");
-                ViewBag.StudentId = id;
+                return NotFound();
+            }
+
+            decimal totalAmount = 0;
+            var selectedItems = new List<FeeItem>();
+
+            foreach (var item in model.Items)
+            {
+                if (item.IsSelected)
+                {
+                    var feeItem = await _context.FeeItems.FindAsync(item.Id);
+                    if (feeItem != null)
+                    {
+                        selectedItems.Add(feeItem);
+                        totalAmount += feeItem.Value;
+                    }
+                }
+            }
+
+            if (selectedItems.Count == 0)
+            {
+                ModelState.AddModelError("", "Please select at least one item.");
+                ViewBag.StudentId = model.Id;
                 return View(model);
             }
 
-            var selectedFees = model.Items
-                .Where(x => x.IsSelected)
-                .Select(x => new { x.Name, x.Value })
-                .ToList();
+            student.HasPaid = true;
+            student.Fee = totalAmount;
+            student.Date = DateTime.UtcNow;
 
-            var student = await _context.Students.FindAsync(id);
-            if (student != null)
-            {
-                decimal totalAmount = selectedFees.Sum(x => x.Value);
-                student.HasPaid = true;
-                student.Fee = totalAmount;
-                _context.Entry(student).State = EntityState.Modified;
-                await _context.SaveChangesAsync();
-            }
-            CountTotalFee();
-            return RedirectToAction(nameof(List));
+            _context.Update(student);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("List");
         }
 
         // Print Receipt (Asynchronous)
@@ -304,9 +307,6 @@ namespace StudentsFeeSystem.Controllers
 
             return File(pdfBytes, "application/pdf");
         }
-
-        // Reset all fees to zero asynchronously
-
     
         public async Task<IActionResult> ResetFees()
         {
@@ -320,7 +320,7 @@ namespace StudentsFeeSystem.Controllers
 
             await _context.SaveChangesAsync();
             TempData["Message"] = "All fees have been reset to 0 and payment status is set to false.";
-            CountTotalFee();
+            await CountTotalFee();
             return RedirectToAction("List");
         }
 
@@ -342,7 +342,7 @@ namespace StudentsFeeSystem.Controllers
 
             _context.Students.Remove(student);
             await _context.SaveChangesAsync();
-            CountTotalFee();
+            await CountTotalFee();
             return RedirectToAction(nameof(List));  
         }
 
@@ -364,7 +364,7 @@ namespace StudentsFeeSystem.Controllers
             await _context.SaveChangesAsync();
 
             TempData["Message"] = "Student fee reset successfully.";
-            CountTotalFee();
+            await CountTotalFee();
             return RedirectToAction(nameof(List));
         }
 
@@ -379,6 +379,8 @@ namespace StudentsFeeSystem.Controllers
                          });
             ViewBag.Departments = new SelectList(departmentList, "Value", "Text");
         }
+       
+
         private async Task CountTotalFee()
         {
             decimal? totalFee = await _context.Students.SumAsync(x => x.Fee);

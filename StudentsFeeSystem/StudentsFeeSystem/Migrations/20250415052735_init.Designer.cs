@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StudentsFeeSystem.Data;
 
@@ -10,9 +11,11 @@ using StudentsFeeSystem.Data;
 namespace StudentsFeeSystem.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250415052735_init")]
+    partial class init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.3");
@@ -23,6 +26,9 @@ namespace StudentsFeeSystem.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<bool>("AssignedToClass1")
+                        .HasColumnType("INTEGER");
+
                     b.Property<bool>("AssignedToClass10")
                         .HasColumnType("INTEGER");
 
@@ -30,6 +36,18 @@ namespace StudentsFeeSystem.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("AssignedToClass12")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("AssignedToClass2")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("AssignedToClass3")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("AssignedToClass4")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("AssignedToClass5")
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("AssignedToClass6")

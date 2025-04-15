@@ -2,6 +2,7 @@
 {
     public class ItemListViewModel
     {
-        public List<Item> Items { get; set; }
+        public int Id { get; set; }
+        public List<FeeItemViewModel> Items { get; set; }
     }
 }
